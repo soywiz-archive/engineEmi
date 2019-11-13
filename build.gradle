@@ -1,3 +1,5 @@
+import java.awt.Desktop
+
 group 'org.example'
 version '1.0-SNAPSHOT'
 
@@ -20,30 +22,29 @@ dependencies {
     compile "org.jetbrains.kotlin:kotlin-stdlib-js:$kotlin_version"
 }
 
-task assembleWeb(type: Sync) {
+    task assembleWeb(type: Sync) {
+        configurations.compile.each { File file ->
+            from(zipTree(file.absolutePath), {
+                includeEmptyDirs = false
+                include { fileTreeElement ->
+                    def path = fileTreeElement.path
+                    (path.endsWith(".js") || path.endsWith(".map")) && (path.startsWith("META-INF/resources/") || !path.startsWith("META-INF/"))
+                }
+            })
+        }
+        compileKotlin2Js {
+            kotlinOptions.outputFile = "${projectDir}/web/output.js"
+            kotlinOptions.moduleKind = "plain"
+            kotlinOptions.sourceMap = true
+            kotlinOptions.sourceMapEmbedSources = "always"
 
-    configurations.compile.each { File file ->
-        from(zipTree(file.absolutePath), {
-            includeEmptyDirs = false
-            include { fileTreeElement ->
-                def path = fileTreeElement.path
-                path.endsWith(".js") && (path.startsWith("META-INF/resources/") ||
-                        !path.startsWith("META-INF/"))
-            }
-        })
+
+        }
+
+        from compileKotlin2Js.destinationDir
+        into "${projectDir}/web/js"
+        dependsOn classes
     }
-    compileKotlin2Js {
-        kotlinOptions.outputFile = "${projectDir}/web/output.js"
-        kotlinOptions.moduleKind = "plain"
-        kotlinOptions.sourceMap = false
-    }
-
-    from compileKotlin2Js.destinationDir
-    into "${projectDir}/web/js"
-
-    dependsOn classes
-}
-
 
 task copyHTMLFolder(type: Copy) {
     dependsOn assembleWeb
@@ -54,16 +55,14 @@ task copyHTMLFolder(type: Copy) {
 task openUrlInBrowser {
     dependsOn copyHTMLFolder
     doLast {
-        java.awt.Desktop.desktop.browse "http://localhost:63342/engineEmi/web/index.html".toURI()
+        Desktop.desktop.browse "http://localhost:63342/engineEmi/web/index.html".toURI()
     }
 }
 
 assemble.dependsOn assembleWeb
 
-
 sourceSets {
     main.kotlin.srcDirs += 'src/'
-    main.java.srcDirs += 'src/'
 }
 
 
