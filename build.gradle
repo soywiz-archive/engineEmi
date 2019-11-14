@@ -66,3 +66,11 @@ sourceSets {
 }
 
 
+compileJava {
+    enabled = false
+}
+
+processResources {
+    enabled = false
+}
+
