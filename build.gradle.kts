@@ -1,4 +1,7 @@
 import com.soywiz.korge.gradle.*
+import org.gradle.internal.impldep.org.apache.ivy.util.cli.*
+import java.awt.*
+import java.net.*
 
 
 buildscript {
@@ -48,13 +51,14 @@ tasks.register<Copy>("copyHtmlToBuildfolder"){
 
 tasks.register<DefaultTask>("openInBrowser"){
     group = "engineemi"
-    dependsOn("compileKotlinJs")
-    dependsOn("genResources")
-    dependsOn("jsProcessResources")
-    dependsOn("jsMainClasses")
-    dependsOn("jsJar")
-    dependsOn("jsWeb")
-    dependsOn("copyHtmlToBuildfolder")
+ //   dependsOn("compileKotlinJs")
+  //  dependsOn("genResources")
+   // dependsOn("jsProcessResources")
+   // dependsOn("jsMainClasses")
+   // dependsOn("jsJar")
+   // dependsOn("jsWeb")
+   // dependsOn("copyHtmlToBuildfolder")
+    dependsOn("jsWebRun")
 
 }
 
