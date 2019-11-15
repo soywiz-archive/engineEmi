@@ -23,96 +23,31 @@ import kotlin.reflect.*
 
 object Engine {
 
-    var canvasElements = mutableListOf<CanvasElement>()
-
-
-    suspend fun main() = Korge(quality = GameWindow.Quality.PERFORMANCE, title = "My Awesome Box2D Game!") {
+    var views = mutableListOf<CanvasElement>()
+    suspend fun main() = Korge(quality = GameWindow.Quality.PERFORMANCE, title = "Engine Emi") {
         setupCircle()
     }
 
     fun Stage.setupCircle() {
-        val circle = Circle(radius = 32.0)
-        addChild(circle)
+        Engine.views.map { addChild(it) }
+
         launch {
             while (true) {
-                circle.x++
-                circle.y++
-
+                Engine.views.map { it.animate() }
                 delay(16.milliseconds)
             }
         }
     }
 
-    class Circle(radius: Double = 16.0, color: RGBA = Colors.WHITE) : Container() {
-        var radius: Double = radius
-            set(value) {
-                field = value; updateGraphics()
-            }
-
-        var color: RGBA = color
-            set(value) {
-                field = value; updateGraphics()
-            }
-
-        val graphics = graphics {
-        }
-
-        init {
-            updateGraphics()
-        }
-
-        private fun updateGraphics() {
-            graphics.apply {
-                clear()
-                fill(color) {
-                    circle(0.0, 0.0, radius)
-                }
-            }
-        }
-
-
-
-
-
-
-        /**
-         * Registriert die CanvasElemente bei der Engine so dass sie bekannt werden
-         *
-         * @param canvasElement
-         */
-        fun registerCanvasElement(canvasElement: CanvasElement) {
-            canvasElements.add(canvasElement)
-        }
-
-        /**
-         * Registriert alle CanvasElements einer Collection
-         *
-         * @param elements
-         */
-        fun registerCanvasElements(elements: Collection<CanvasElement>) {
-            elements.map { canvasElements.add(it) }
-        }
-/*
-
-        */
-/**
-         * Ruft drawOnContext(context) für alle registrierten CanvasElements auf
-         *
-         *//*
-
-        fun drawAllCanvasElements() {
-            canvasElements.map { it.drawOnContext() }
-        }
-
-        fun updateAllCanvasElements() {
-            canvasElements.map { it.frameDidRender() }
-        }
-*/
-
-        /**
-         * Cleared den Context, um z.B. ein neues Frame in der Animation zu zeichnen
-         *
-         */
-
+    fun registerCanvasElement(canvasElement: CanvasElement){
+    //        println("DEPRECATED/ÜBERHOLT: Verwenden Sie stattdessen registerElement()" )
+        views.add(canvasElement)
     }
+
+    /*fun registerElement(view : View){
+        views.add(view)
+    }*/
+
+
+
 }

@@ -30,7 +30,7 @@ korge {
     name = "Sample1"
     description = "A sample using Korge and the gradle plugin"
     orientation = Orientation.LANDSCAPE
-    jvmMainClassName = "Sample1Kt"
+    jvmMainClassName = "MainKt"
 
 
 
@@ -66,8 +66,19 @@ tasks.register<DefaultTask>("openInBrowser"){
     dependsOn("jsWebRun")
 }
 
+tasks.register<DefaultTask>("openLocal"){
+    group = "engineemi"
+    //   dependsOn("compileKotlinJs")
+    //  dependsOn("genResources")
+    // dependsOn("jsProcessResources")
+    // dependsOn("jsMainClasses")
+    // dependsOn("jsJar")
+    // dependsOn("jsWeb")
+    // dependsOn("copyHtmlToBuildfolder")
 
 
+    dependsOn("runJvm")
+}
 
 
 
@@ -77,6 +88,4 @@ tasks.register<DefaultTask>("openInBrowser"){
 
 //kotlin.sourceSets["commonMain"].resources.srcDir("src")
 kotlin.sourceSets["commonMain"].kotlin.srcDir("src")
-
-
 
