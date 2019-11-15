@@ -1,4 +1,5 @@
 import com.soywiz.korge.gradle.*
+import com.soywiz.korge.gradle.targets.js.*
 import org.gradle.internal.impldep.org.apache.ivy.util.cli.*
 import java.awt.*
 import java.net.*
@@ -28,8 +29,10 @@ korge {
     id = "com.soywiz.sample1"
     name = "Sample1"
     description = "A sample using Korge and the gradle plugin"
-    orientation = com.soywiz.korge.gradle.Orientation.LANDSCAPE
+    orientation = Orientation.LANDSCAPE
     jvmMainClassName = "Sample1Kt"
+
+
 
     admob("ca-app-pub-xxxxxxxx~yyyyyy")
 
@@ -58,7 +61,10 @@ tasks.register<DefaultTask>("openInBrowser"){
    // dependsOn("jsJar")
    // dependsOn("jsWeb")
    // dependsOn("copyHtmlToBuildfolder")
+
+
     dependsOn("jsWebRun")
+
 
 }
 
