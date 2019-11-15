@@ -64,9 +64,15 @@ tasks.register<DefaultTask>("openInBrowser"){
 
 
     dependsOn("jsWebRun")
-
-
 }
+
+
+
+
+
+
+
+
 
 
 //kotlin.sourceSets["commonMain"].resources.srcDir("src")
