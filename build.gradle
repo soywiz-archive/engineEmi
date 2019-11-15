@@ -20,6 +20,8 @@ repositories {
 
 dependencies {
     compile "org.jetbrains.kotlin:kotlin-stdlib-js:$kotlin_version"
+    testCompile 'junit:junit:4.12'
+    testCompile "org.jetbrains.kotlin:kotlin-test-junit:$kotlin_version"
 }
 
     task assembleWeb(type: Sync) {
@@ -63,6 +65,9 @@ assemble.dependsOn assembleWeb
 
 sourceSets {
     main.kotlin.srcDirs += 'src/'
+
+    test.kotlin.srcDirs += 'test/'
+    //test.java.srcDirs += 'test/'
 }
 
 
