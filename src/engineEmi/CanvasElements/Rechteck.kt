@@ -1,3 +1,4 @@
+/*
 package engineEmi
 
 import org.w3c.dom.CanvasRenderingContext2D
@@ -27,3 +28,4 @@ open class Rechteck(override var height: Double = 0.0,
         this.context?.rect(posX, this.posY, this.width, this.height)
     }
 }
+*/

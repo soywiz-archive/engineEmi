@@ -1,3 +1,4 @@
+/*
 package engineEmi.CanvasElements
 
 import engineEmi.CanvasElement
@@ -31,3 +32,4 @@ open class Gerade(var toX: Double = 0.0,
         context?.lineTo(toX, toY)
     }
 }
+*/

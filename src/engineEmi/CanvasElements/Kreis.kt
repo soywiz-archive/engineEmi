@@ -1,3 +1,4 @@
+/*
 package engineEmi
 
 import org.w3c.dom.CanvasRenderingContext2D
@@ -37,3 +38,4 @@ open class Kreis(var radius : Double = 0.0,
         context?.arc(posX, this.posY, this.radius,0.0,2 * kotlin.math.PI)
     }
 }
+*/

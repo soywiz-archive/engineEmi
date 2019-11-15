@@ -1,3 +1,4 @@
+/*
 package engineEmi
 
 import engineEmi.CanvasElement
@@ -35,4 +36,4 @@ open class Text(var text : String = "",
         context?.strokeStyle = strokeStyle
         context?.fillText(text, posX,posY)
     }
-}
+}*/
