@@ -3,7 +3,8 @@
   <component name="CompilerConfiguration">
     <bytecodeTargetLevel>
       <module name="engineEmi.j" target="1.8" />
-      <module name="engineEmi.test" target="1.8" />
+      <module name="engineEmi.jvmMain" target="1.6" />
+      <module name="engineEmi.jvmTest" target="1.6" />
     </bytecodeTargetLevel>
   </component>
 </project>

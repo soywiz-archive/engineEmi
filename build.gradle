@@ -54,11 +54,16 @@ task copyHTMLFolder(type: Copy) {
     into file("${projectDir}/web/")
 }
 
-task openUrlInBrowser {
+task openInBrowser {
+    group "engineEmi"
     dependsOn copyHTMLFolder
     doLast {
         Desktop.desktop.browse "http://localhost:63342/engineEmi/web/index.html".toURI()
     }
+}
+
+task openUrlInBrowser {
+    dependsOn openInBrowser
 }
 
 assemble.dependsOn assembleWeb
