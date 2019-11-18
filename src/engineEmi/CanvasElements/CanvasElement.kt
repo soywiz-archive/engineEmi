@@ -2,9 +2,6 @@ package engineEmi
 
 
 import com.soywiz.korge.view.*
-import com.soywiz.korim.color.*
-import kotlin.math.cos
-import kotlin.math.sin
 
 abstract class CanvasElement(
                                x : Double,
@@ -14,6 +11,10 @@ abstract class CanvasElement(
     init {
         super.x = x
         super.y = y
+    }
+
+
+    val graphics = graphics {
     }
 
     var posX = x
@@ -48,9 +49,9 @@ abstract class CanvasElement(
             Log.log("DEPRECATED/ÜBERHOLT: " + ::strokeStyle.name + ". Verwenden Sie stattdessen strokeColor" )
         }
 
-    open fun animate(){
+    open suspend fun animate() {}
 
-    }
+    open suspend fun prepareElement() {}
 
     val centerX: Double
         get() {
@@ -62,4 +63,5 @@ abstract class CanvasElement(
             return height / 2 + posY
         }
 
+    abstract fun updateGraphics()
 }

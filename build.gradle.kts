@@ -1,8 +1,4 @@
 import com.soywiz.korge.gradle.*
-import com.soywiz.korge.gradle.targets.js.*
-import org.gradle.internal.impldep.org.apache.ivy.util.cli.*
-import java.awt.*
-import java.net.*
 
 
 buildscript {
@@ -88,4 +84,5 @@ tasks.register<DefaultTask>("openLocal"){
 
 //kotlin.sourceSets["commonMain"].resources.srcDir("src")
 kotlin.sourceSets["commonMain"].kotlin.srcDir("src")
+kotlin.sourceSets["commonMain"].resources.srcDir("resources")
 

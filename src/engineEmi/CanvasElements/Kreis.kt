@@ -1,17 +1,16 @@
-
 package engineEmi
 
-import com.soywiz.korge.view.*
 import com.soywiz.korim.color.*
 import com.soywiz.korma.geom.vector.*
 
 
-open class Kreis(radius : Double = 10.0,
-                 x : Double = 100.0,
-                 y : Double = 100.0,
-                 fillColor : RGBA = Colors.GREEN,
-                 strokeColor : RGBA = Colors.RED
-                 ) : CanvasElement(x = x, y = y){
+open class Kreis(radius: Double = 10.0,
+                 x: Double = 100.0,
+                 y: Double = 100.0,
+                 fillColor: RGBA = Colors.GREEN,
+                 strokeColor: RGBA = Colors.RED
+) : CanvasElement(x = x, y = y) {
+
 
     var radius: Double = radius
         set(value) {
@@ -28,14 +27,12 @@ open class Kreis(radius : Double = 10.0,
             field = value; updateGraphics()
         }
 
-    val graphics = graphics {
-    }
-
-    init{
+    init {
         updateGraphics()
     }
 
-    private fun updateGraphics() {
+
+    final override fun updateGraphics() {
         graphics.apply {
             clear()
             fill(fillColor) {
@@ -44,7 +41,7 @@ open class Kreis(radius : Double = 10.0,
         }
     }
 
-    override fun animate() {
+    override suspend fun animate() {
         super.animate()
         this.x++
         this.y++

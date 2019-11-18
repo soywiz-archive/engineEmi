@@ -1,35 +1,40 @@
-/*
+
 package engineEmi.CanvasElements
 
-import engineEmi.CanvasElement
-import org.w3c.dom.CanvasRenderingContext2D
-import kotlin.math.abs
+import com.soywiz.korim.color.*
+import engineEmi.*
 
 open class Gerade(var toX: Double = 0.0,
-             var toY: Double = 0.0,
-             posX: Double = 0.0,
-             posY: Double = 0.0,
-             fillStyle: String = "",
-             strokeStyle: String = "",
-             shadowColor: String = "",
-             shadowBlur: String = "",
-             shadowOffsetX: Double = 0.0,
-             shadowOffsetY: Double = 0.0,
-             context: CanvasRenderingContext2D? = null) : CanvasElement(posX = posX, posY = posY, fillStyle = fillStyle, strokeStyle = strokeStyle, shadowColor = shadowColor, shadowBlur = shadowBlur, shadowOffsetX = shadowOffsetX, shadowOffsetY = shadowOffsetY, context = context){
+                  var toY: Double = 0.0,
+                  x: Double = 0.0,
+                  y: Double = 0.0,
+                  fillColor: RGBA = Colors.GREEN,
+                  strokeColor: RGBA = Colors.GREEN) : CanvasElement(x = x, y = y) {
 
-    override val height : Double
-        get() {
-            return abs(posY - toY)
+    var fillColor: RGBA = fillColor
+        set(value) {
+            field = value; updateGraphics()
         }
 
-    override val width : Double
-        get() {
-            return abs(posX - toX)
+    var strokeColor: RGBA = strokeColor
+        set(value) {
+            field = value; updateGraphics()
         }
 
-    override fun callConcreteDrawMethod() {
-        context?.moveTo(posX, posY)
-        context?.lineTo(toX, toY)
+    init {
+        updateGraphics()
+        super.width = toX - x
+        super.height = toY - y
     }
+
+    final override fun updateGraphics() {
+        graphics.apply {
+            clear()
+            fill(fillColor) {
+                lineTo(toX, toY)
+            }
+        }
+    }
+
 }
-*/
+

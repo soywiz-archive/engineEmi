@@ -1,31 +1,42 @@
-/*
 package engineEmi
 
-import org.w3c.dom.CanvasRenderingContext2D
+import com.soywiz.korim.color.*
+import com.soywiz.korma.geom.vector.*
 
-open class Rechteck(override var height: Double = 0.0,
-                    override var width: Double = 0.0,
-                    posX: Double = 0.0,
-                    posY: Double = 0.0,
-                    fillStyle: String = "",
-                    strokeStyle: String = "",
-                    shadowColor: String = "",
-                    shadowBlur: String = "",
-                    shadowOffsetX: Double = 0.0,
-                    shadowOffsetY: Double = 0.0,
-                    context: CanvasRenderingContext2D? = null)
-    : CanvasElement(posX = posX,
-        posY = posY,
-        fillStyle = fillStyle,
-        strokeStyle = strokeStyle,
-        shadowColor = shadowColor,
-        shadowOffsetX = shadowOffsetX,
-        shadowOffsetY = shadowOffsetY,
-        shadowBlur = shadowBlur,
-        context = context) {
 
-    override fun callConcreteDrawMethod() {
-        this.context?.rect(posX, this.posY, this.width, this.height)
+open class Rechteck(height: Double = 0.0,
+                    width: Double = 0.0,
+                    x: Double = 0.0,
+                    y: Double = 0.0,
+                    fillColor: RGBA = Colors.GREEN,
+                    strokeColor: RGBA = Colors.RED
+) : CanvasElement(x = x, y = y) {
+
+
+    var fillColor: RGBA = fillColor
+        set(value) {
+            field = value; updateGraphics()
+        }
+
+    var strokeColor: RGBA = strokeColor
+        set(value) {
+            field = value; updateGraphics()
+        }
+
+    init {
+        updateGraphics()
+        super.width = width
+        super.height = height
+    }
+
+    final override fun updateGraphics() {
+        graphics.apply {
+            clear()
+            fill(fillColor) {
+                rect(x, y, height, width)
+
+            }
+        }
     }
 }
-*/
+

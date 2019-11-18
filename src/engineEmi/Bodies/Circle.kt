@@ -9,7 +9,7 @@ import org.jbox2d.collision.shapes.*
 import org.jbox2d.common.*
 import org.jbox2d.dynamics.*
 
-class Kreis2(x : Double,
+class Circle(x: Double,
              y : Double,
              var bodyType : BodyType = BodyType.STATIC,
              var radius : Float,
@@ -28,11 +28,11 @@ class Kreis2(x : Double,
 
 
     var view = Graphics().apply {
-        if (strokeColor != null) {
-            fillStroke(Context2d.Color(strokeColor!!), Context2d.Color(strokeColor!!), Context2d.StrokeInfo(thickness = strokeThickness)) {
+
+        fillStroke(Context2d.Color(strokeColor), Context2d.Color(strokeColor), Context2d.StrokeInfo(thickness = strokeThickness)) {
                 circle(x, y, radius)
                 //rect(0, 0, 400, 20)
-            }
+
         }
         fill(fillColor) {
             circle(x, y, radius)
@@ -47,9 +47,9 @@ class Kreis2(x : Double,
 
     override fun initBody() {
         this.body = world.createBody(bodyDef).fixture {
-            shape = this@Kreis2.shape
-            density = this@Kreis2.density
-            friction = this@Kreis2.friction
+            shape = this@Circle.shape
+            density = this@Circle.density
+            friction = this@Circle.friction
         }.setView(view)
     }
 
