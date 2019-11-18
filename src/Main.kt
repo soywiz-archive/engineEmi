@@ -22,8 +22,8 @@ suspend fun main() {
     val k2 = Circle(0.0, 3.0, radius = 200F, density = 1F, fillColor = Colors.GREEN, bodyType = BodyType.DYNAMIC)
     //Engine.registerBody(k)
     //  val dach = Rectangle(x = -10.0, y = -100.0,width = 10000.0, height = 30.0, fillColor = Colors.AZURE, bodyType = BodyType.STATIC)
-    val boden = Rectangle(x = -20.0, y = -15.0, width = 10000.0, height = 100.0, fillColor = Colors.AZURE, bodyType = BodyType.STATIC)
-    val dach = Rectangle(x = -20.0, y = +20.0, width = 10000.0, height = 100.0, fillColor = Colors.AZURE, bodyType = BodyType.STATIC)
+    val boden = Rectangle(x = -20.0, y = -15.0, width = 10000.0, height = 100.0, fillColor = Colors.RED, bodyType = BodyType.STATIC)
+    val dach = Rectangle(x = -20.0, y = +20.0, width = 10000.0, height = 100.0, fillColor = Colors.RED, bodyType = BodyType.STATIC)
 
     Engine.registerBody(k2)
     Engine.registerBody(boden)
