@@ -3,21 +3,19 @@ package engineEmi.Bodies
 import org.jbox2d.dynamics.*
 
 abstract class Ebody(
-        var x : Double,
-        var y: Double,
-        var bodyType: BodyType
+        var x: Number,
+        var y: Number) {
 
-          //  var type : BodyType = BodyType.STATIC
-            ) {
     lateinit var world : World
+    abstract var body: Body
 
-    fun initForWorld(world: World){
+    open fun initForWorld(world: World) {
         this.world = world
         initBody()
     }
 
     abstract fun initBody()
-
     abstract fun animate()
+
 
 }

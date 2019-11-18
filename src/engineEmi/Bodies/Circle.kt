@@ -1,16 +1,12 @@
+
 package engineEmi.Bodies
 
-import com.soywiz.korge.box2d.*
-import com.soywiz.korge.input.*
-import com.soywiz.korge.view.*
 import com.soywiz.korim.color.*
-import com.soywiz.korim.vector.*
-import com.soywiz.korma.geom.vector.*
 import org.jbox2d.collision.shapes.*
 import org.jbox2d.dynamics.*
 
-class Circle(x: Double = 0.0,
-             y: Double = 0.0,
+class Circle(x: Number = 0,
+             y: Number = 0,
              bodyType: BodyType = BodyType.STATIC,
              var radius : Float,
              var fillColor : RGBA,
@@ -18,42 +14,37 @@ class Circle(x: Double = 0.0,
              var strokeThickness: Double = 0.0,
              private var density: Float = 0.0F,
              private var friction: Float = 0.0F
-) : Ebody(x = x, y = y, bodyType = bodyType) {
+) : Ebody(x = x, y = y) {
 
-    var shape = CircleShape().apply { m_radius = radius }
-    var bodyDef = bodyDef {
-        type = bodyType
-        setPosition(x, y)
 
+    private val shape = CircleShape().apply { m_radius = radius }
+    private val bd = BodyDef()
+    private var fixture = FixtureDef()
+
+    override lateinit var body: Body
+
+    init {
+        fixture.density = density
+        fixture.shape = this@Circle.shape
+        fixture.friction = this@Circle.friction
     }
 
-    var view = Graphics().apply {
-        fillStroke(Context2d.Color(strokeColor), Context2d.Color(strokeColor), Context2d.StrokeInfo(thickness = strokeThickness)) {
-                circle(x, y, radius)
-        }
-        fill(fillColor) {
-            circle(x, y, radius)
-        }.apply { onOver { println(this@Circle.bodyType) } }
-
-    }.scale(1f / 100f)
-
-
-
-    lateinit var body : Body
-
-
+    /**
+     * Bei der Erstellung des Bodies ist die world noch nicht bekannt. Diese wird erst beim erzeugen des Korge
+     * Objekts erstellt. Nach dem die Welt erstellt ist, wird initBody() aufgerufen, um das Body Objekt
+     * fertig zu initialiseren
+     *
+     */
     override fun initBody() {
-        this.body = world.createBody(bodyDef).fixture {
-            shape = this@Circle.shape
-            density = this@Circle.density
-            friction = this@Circle.friction
-        }.setView(view)
+        body = Body(bd, world)
+        body.createFixture(fixture)
     }
 
-    override fun animate(){
-        //  body.linearVelocity = Vec2(1F, 10F)
+    override fun animate() {
+
     }
-}
+    }
+
 
 
 

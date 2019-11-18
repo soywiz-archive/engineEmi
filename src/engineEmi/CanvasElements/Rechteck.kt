@@ -1,5 +1,6 @@
 package engineEmi
 
+import com.soywiz.korge.view.*
 import com.soywiz.korim.color.*
 import com.soywiz.korma.geom.vector.*
 
@@ -30,12 +31,12 @@ open class Rechteck(height: Double = 0.0,
     }
 
     final override fun updateGraphics() {
-        graphics.apply {
+        graphics {
             clear()
             fill(fillColor) {
-                rect(x, y, height, width)
-
+                rect(-x, -y, width, height)
             }
+            position(x, y)
         }
     }
 }

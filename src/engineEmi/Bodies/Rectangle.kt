@@ -3,57 +3,50 @@ package engineEmi.Bodies
 import com.soywiz.korge.box2d.*
 import com.soywiz.korge.view.*
 import com.soywiz.korim.color.*
-import com.soywiz.korim.vector.*
-import com.soywiz.korma.geom.vector.*
+import org.jbox2d.common.*
 import org.jbox2d.dynamics.*
 
-class Rectangle(x: Double = 0.0,
-                y: Double = 0.0,
-                width: Double = 0.0,
-                height: Double = 0.0,
+class Rectangle(x: Number = 0,
+                y: Number = 0,
+                var width: Number = 0,
+                var height: Number = 0,
                 bodyType: BodyType = BodyType.STATIC,
                 var fillColor: RGBA,
+                var density: Float = 1f,
+                var friction: Float = 0.2f,
                 var strokeColor: RGBA = Colors.BLUE,
                 var strokeThickness: Double = 0.0
-) : Ebody(x = x, y = y, bodyType = bodyType) {
+) : Ebody(x = x, y = y) {
 
-    var shape = BoxShape(width, height)
-    var density = 0.0F
-    var friction = 0.0F
-    var bodyDef = bodyDef {
-        type = bodyType
-        setPosition(x, y)
+    private val shape = BoxShape(width = width, height = height)
+    private val bd = BodyDef()
+    private var fixture = FixtureDef()
+
+    override lateinit var body: Body
+
+    init {
+        fixture.density = density
+        fixture.shape = this@Rectangle.shape
+        fixture.friction = this@Rectangle.friction
     }
 
-
-    var view = Graphics().apply {
-
-        fillStroke(Context2d.Color(strokeColor), Context2d.Color(strokeColor), Context2d.StrokeInfo(thickness = strokeThickness)) {
-            rect(x, y, width, height)
-            //rect(0, 0, 400, 20)
-
-        }
-        fill(fillColor) {
-            rect(x, y, width, height)
-        }
-
-    }.scale(1f / 100f)
-
-
-    lateinit var body: Body
-
-
+    /**
+     * Bei der Erstellung des Bodies ist die world noch nicht bekannt. Diese wird erst beim erzeugen des Korge
+     * Objekts erstellt. Nach dem die Welt erstellt ist, wird initBody() aufgerufen, um das Body Objekt
+     * fertig zu initialiseren
+     *
+     */
     override fun initBody() {
-        this.body = world.createBody(bodyDef).fixture {
-            shape = this@Rectangle.shape
-            density = this@Rectangle.density
-            friction = this@Rectangle.friction
-        }.setView(view)
+        body = world.createBody(bd)
+        body.createFixture(fixture)
+        body.setTransform(Vec2(x.toFloat(), y.toFloat()), angle = 0f)
+        body.setViewWithContainer(SolidRect(width, height, fillColor).position(x, y))
+        println(body.position)
     }
 
     override fun animate() {
-
     }
+
 }
 
 

@@ -1,11 +1,10 @@
 package engineEmi
 
-import com.soywiz.klock.*
 import com.soywiz.korge.*
 import com.soywiz.korge.box2d.*
 import com.soywiz.korge.view.*
 import com.soywiz.korgw.*
-import com.soywiz.korio.async.*
+import com.soywiz.korim.color.*
 import engineEmi.Bodies.*
 
 
@@ -22,30 +21,43 @@ object Engine {
 
         viewWidth = this.width
         viewHeight = this.height
+
+        views.clearColor = Colors.DIMGRAY
         // Physik
+
+
         if (!bodies.isEmpty()) {
             worldView {
-                position(400, 400).scale(20)
+                position(400, 400)
                 bodies.map { registerBodyWithWorld(it) }
-                bodies.map { it }
-                // bodies.map { println(it.bodyType) }
+                bodies.onEach { it.body }
+
+/*
+                 createBody  {
+                    setPosition(0, -10)
+                }.fixture {
+                    shape = BoxShape(100, 20)
+                    density = 0f
+                }.setViewWithContainer(solidRect(100, 20, Colors.BLUE).position(-50, -10))*/
+            }
 
 
             }
+
         }
 
-        // Physikfreie Zone
-        if (!canvasElements.isEmpty()) {
-            canvasElements.map { it.prepareElement() }
-            canvasElements.map { addChild(it) }
-            launch {
-                while (true) {
-                    canvasElements.map { it.animate() }
-                    delay(16.milliseconds)
-                }
-            }
-        }
-    }
+    /* // Physikfreie Zone
+     if (!canvasElements.isEmpty()) {
+         canvasElements.map { it.prepareElement() }
+         canvasElements.map { addChild(it) }
+         launch {
+             while (true) {
+                 canvasElements.map { it.animate() }
+                 delay(16.milliseconds)
+             }
+         }
+     }*/
+
 
 
     fun WorldView.registerBodyWithWorld(body: Ebody) {

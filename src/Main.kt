@@ -2,7 +2,6 @@ import com.soywiz.korim.color.*
 import engineEmi.*
 import engineEmi.Bodies.*
 import engineEmi.CanvasElements.*
-import org.jbox2d.dynamics.*
 
 
 suspend fun main() {
@@ -19,15 +18,23 @@ suspend fun main() {
 
    // Engine.registerCanvasElement(circle)
 
-    val k2 = Circle(0.0, 3.0, radius = 200F, density = 1F, fillColor = Colors.GREEN, bodyType = BodyType.DYNAMIC)
+    //val k2 = Circle(0.0, 30.0, radius = 20F, density = 0.2F, fillColor = Colors.GREEN, bodyType = BodyType.DYNAMIC)
+
     //Engine.registerBody(k)
     //  val dach = Rectangle(x = -10.0, y = -100.0,width = 10000.0, height = 30.0, fillColor = Colors.AZURE, bodyType = BodyType.STATIC)
-    val boden = Rectangle(x = -20.0, y = -15.0, width = 10000.0, height = 100.0, fillColor = Colors.RED, bodyType = BodyType.STATIC)
-    val dach = Rectangle(x = -20.0, y = +20.0, width = 10000.0, height = 100.0, fillColor = Colors.RED, bodyType = BodyType.STATIC)
+    // val boden = Rectangle(x = -20.0, y = 10.0, width = 200f, height = 50f, fillColor = Colors.RED, bodyType = BodyType.STATIC)
+    //val dach = Rectangle(x = 0.0, y = 70.0, width = 200f, height = 10.0f, fillColor = Colors.BLUE, bodyType = BodyType.DYNAMIC)
 
-    Engine.registerBody(k2)
-    Engine.registerBody(boden)
-    Engine.registerBody(dach)
+    val test = Rectangle(x = 0, y = -10, width = 100, height = 20, density = 0f, fillColor = Colors.RED)
+
+    val test2 = Circle(x = 0.5, y = 15, fillColor = Colors.BLUE, radius = 2f)
+
+
+    // Engine.registerBody(k2)
+
+    Engine.registerBody(test)
+    Engine.registerBody(test2)
+
 
     Engine.main()
 
