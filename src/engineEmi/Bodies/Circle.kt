@@ -6,21 +6,20 @@ import com.soywiz.korim.color.*
 import com.soywiz.korim.vector.*
 import com.soywiz.korma.geom.vector.*
 import org.jbox2d.collision.shapes.*
-import org.jbox2d.common.*
 import org.jbox2d.dynamics.*
 
-class Circle(x: Double,
-             y : Double,
+class Circle(x: Double = 0.0,
+             y: Double = 0.0,
              var bodyType : BodyType = BodyType.STATIC,
              var radius : Float,
              var fillColor : RGBA,
              var strokeColor : RGBA = Colors.BLUE,
-             var strokeThickness : Double = 0.0
+             var strokeThickness: Double = 0.0,
+             private var density: Float = 0.0F,
+             private var friction: Float = 0.0F
            ) : Ebody(x = x, y = y) {
 
     var shape = CircleShape().apply { m_radius = radius }
-    var density = 0.0F
-    var friction = 0.0F
     var bodyDef = bodyDef {
         type = bodyType
         setPosition(x, y)
@@ -54,7 +53,7 @@ class Circle(x: Double,
     }
 
     override fun animate(){
-        body.linearVelocity = Vec2(1F, 0.3F)
+        //  body.linearVelocity = Vec2(1F, 10F)
     }
 }
 
