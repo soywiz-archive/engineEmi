@@ -7,18 +7,16 @@ import com.soywiz.korma.geom.vector.*
 
 
 open class Kreis(radius : Double = 10.0,
-                 posX : Double = 100.0,
-                 posY : Double = 100.0,
+                 x : Double = 100.0,
+                 y : Double = 100.0,
                  fillColor : RGBA = Colors.GREEN,
                  strokeColor : RGBA = Colors.RED
-                 ) : CanvasElement(posX = posX, posY = posY ){
+                 ) : CanvasElement(x = x, y = y){
 
     var radius: Double = radius
         set(value) {
             field = value; updateGraphics()
         }
-
-
 
     var fillColor: RGBA = fillColor
         set(value) {
@@ -36,6 +34,7 @@ open class Kreis(radius : Double = 10.0,
     init{
         updateGraphics()
     }
+
     private fun updateGraphics() {
         graphics.apply {
             clear()
@@ -47,8 +46,7 @@ open class Kreis(radius : Double = 10.0,
 
     override fun animate() {
         super.animate()
-        this.posX++
-        this.posY++
-
+        this.x++
+        this.y++
     }
 }

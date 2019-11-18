@@ -6,7 +6,7 @@ import engineEmi.*
 suspend fun main() {
 
    // val circle = Circle(radius = 32.0)
-    val meinKreis = Kreis(posX = 100.0, posY = 100.0, radius = 20.0, fillColor = Colors.LIGHTCORAL)
+    val meinKreis = Kreis(x = 100.0, y = 100.0, radius = 20.0, fillColor = Colors.LIGHTCORAL)
     Engine.registerCanvasElement(meinKreis)
    // Engine.registerCanvasElement(circle)
     Engine.main()

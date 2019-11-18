@@ -6,43 +6,46 @@ import com.soywiz.korim.color.*
 import kotlin.math.cos
 import kotlin.math.sin
 
-abstract class CanvasElement(  posX : Double,
-                               posY : Double
+abstract class CanvasElement(
+                               x : Double,
+                               y : Double
                              ) : Container(){
 
     init {
-        x = posX
-        y = posY
+        super.x = x
+        super.y = y
     }
 
-    var posX = posX
+    var posX = x
     set(value){
+        Log.log("DEPRECATED/ÜBERHOLT: " + ::fillStyle.name + ". Verwenden Sie stattdessen x" )
         x = posX
         field = value
     }
-    var posY = posY
+    var posY = y
         set(value){
+            Log.log("DEPRECATED/ÜBERHOLT: " + ::fillStyle.name + ". Verwenden Sie stattdessen y" )
             y = posY
             field = value
         }
 
     var fillStyle = ""
     get() {
-       println("DEPRECATED/ÜBERHOLT: " + ::fillStyle.name + ". Verwenden Sie stattdessen fillColor" )
+       Log.log("DEPRECATED/ÜBERHOLT: " + ::fillStyle.name + ". Verwenden Sie stattdessen fillColor" )
         return field
     }
     set(value) {
         field = value
-        println("DEPRECATED/ÜBERHOLT: " + ::fillStyle.name + ". Verwenden Sie stattdessen fillColor" )
+        Log.log("DEPRECATED/ÜBERHOLT: " + ::fillStyle.name + ". Verwenden Sie stattdessen fillColor" )
     }
     var strokeStyle = ""
         get() {
-            println("DEPRECATED/ÜBERHOLT: " + ::strokeStyle.name + ". Verwenden Sie stattdessen strokeColor" )
+            Log.log("DEPRECATED/ÜBERHOLT: " + ::strokeStyle.name + ". Verwenden Sie stattdessen strokeColor" )
             return field
         }
         set(value) {
             field = value
-            println("DEPRECATED/ÜBERHOLT: " + ::strokeStyle.name + ". Verwenden Sie stattdessen strokeColor" )
+            Log.log("DEPRECATED/ÜBERHOLT: " + ::strokeStyle.name + ". Verwenden Sie stattdessen strokeColor" )
         }
 
     open fun animate(){
