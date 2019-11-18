@@ -1,6 +1,7 @@
 package engineEmi.Bodies
 
 import com.soywiz.korge.box2d.*
+import com.soywiz.korge.input.*
 import com.soywiz.korge.view.*
 import com.soywiz.korim.color.*
 import com.soywiz.korim.vector.*
@@ -10,32 +11,29 @@ import org.jbox2d.dynamics.*
 
 class Circle(x: Double = 0.0,
              y: Double = 0.0,
-             var bodyType : BodyType = BodyType.STATIC,
+             bodyType: BodyType = BodyType.STATIC,
              var radius : Float,
              var fillColor : RGBA,
              var strokeColor : RGBA = Colors.BLUE,
              var strokeThickness: Double = 0.0,
              private var density: Float = 0.0F,
              private var friction: Float = 0.0F
-           ) : Ebody(x = x, y = y) {
+) : Ebody(x = x, y = y, bodyType = bodyType) {
 
     var shape = CircleShape().apply { m_radius = radius }
     var bodyDef = bodyDef {
         type = bodyType
         setPosition(x, y)
+
     }
 
-
     var view = Graphics().apply {
-
         fillStroke(Context2d.Color(strokeColor), Context2d.Color(strokeColor), Context2d.StrokeInfo(thickness = strokeThickness)) {
                 circle(x, y, radius)
-                //rect(0, 0, 400, 20)
-
         }
         fill(fillColor) {
             circle(x, y, radius)
-        }
+        }.apply { onOver { println(this@Circle.bodyType) } }
 
     }.scale(1f / 100f)
 

@@ -1,11 +1,11 @@
 package engineEmi.Bodies
 
-import com.soywiz.korge.box2d.*
 import org.jbox2d.dynamics.*
 
 abstract class Ebody(
-            var x : Double,
-            var y : Double
+        var x : Double,
+        var y: Double,
+        var bodyType: BodyType
 
           //  var type : BodyType = BodyType.STATIC
             ) {

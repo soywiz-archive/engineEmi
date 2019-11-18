@@ -11,11 +11,11 @@ class Rectangle(x: Double = 0.0,
                 y: Double = 0.0,
                 width: Double = 0.0,
                 height: Double = 0.0,
-                var bodyType: BodyType = BodyType.STATIC,
+                bodyType: BodyType = BodyType.STATIC,
                 var fillColor: RGBA,
                 var strokeColor: RGBA = Colors.BLUE,
                 var strokeThickness: Double = 0.0
-) : Ebody(x = x, y = y) {
+) : Ebody(x = x, y = y, bodyType = bodyType) {
 
     var shape = BoxShape(width, height)
     var density = 0.0F

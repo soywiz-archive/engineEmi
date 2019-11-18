@@ -28,7 +28,9 @@ object Engine {
                 position(400, 400).scale(20)
                 bodies.map { registerBodyWithWorld(it) }
                 bodies.map { it }
-                bodies.map { it.animate() }
+                // bodies.map { println(it.bodyType) }
+
+
             }
         }
 
@@ -67,5 +69,6 @@ object Engine {
         else
             Log.log("Objekt ${o} vom Typ ${o::class} kann nicht registriert werden.")
     }
+
 
 }
