@@ -28,17 +28,9 @@ object Engine {
 
         if (!bodies.isEmpty()) {
             worldView {
-                position(400, 400)
+                position(400, 400).scale(1)
                 bodies.map { registerBodyWithWorld(it) }
                 bodies.onEach { it.body }
-
-/*
-                 createBody  {
-                    setPosition(0, -10)
-                }.fixture {
-                    shape = BoxShape(100, 20)
-                    density = 0f
-                }.setViewWithContainer(solidRect(100, 20, Colors.BLUE).position(-50, -10))*/
             }
 
 

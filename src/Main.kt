@@ -2,6 +2,7 @@ import com.soywiz.korim.color.*
 import engineEmi.*
 import engineEmi.Bodies.*
 import engineEmi.CanvasElements.*
+import org.jbox2d.dynamics.*
 
 
 suspend fun main() {
@@ -25,15 +26,17 @@ suspend fun main() {
     // val boden = Rectangle(x = -20.0, y = 10.0, width = 200f, height = 50f, fillColor = Colors.RED, bodyType = BodyType.STATIC)
     //val dach = Rectangle(x = 0.0, y = 70.0, width = 200f, height = 10.0f, fillColor = Colors.BLUE, bodyType = BodyType.DYNAMIC)
 
-    val test = Rectangle(x = 0, y = -10, width = 100, height = 20, density = 0f, fillColor = Colors.RED)
+    val test = Rectangle(x = 0, y = -150, width = 100, height = 20, density = 0f, fillColor = Colors.RED)
 
-    val test2 = Circle(x = 0.5, y = 15, fillColor = Colors.BLUE, radius = 2f)
+    repeat(50) {
+        Engine.registerBody(Rectangle((1..200).random(), (-100..100).random(), width = 10, height = 10, density = 0f, fillColor = Colors.GREEN, bodyType = BodyType.DYNAMIC))
+    }
 
 
     // Engine.registerBody(k2)
 
     Engine.registerBody(test)
-    Engine.registerBody(test2)
+    //Engine.registerBody(test2)
 
 
     Engine.main()

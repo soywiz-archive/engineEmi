@@ -3,7 +3,6 @@ package engineEmi.Bodies
 import com.soywiz.korge.box2d.*
 import com.soywiz.korge.view.*
 import com.soywiz.korim.color.*
-import org.jbox2d.common.*
 import org.jbox2d.dynamics.*
 
 class Rectangle(x: Number = 0,
@@ -28,6 +27,8 @@ class Rectangle(x: Number = 0,
         fixture.density = density
         fixture.shape = this@Rectangle.shape
         fixture.friction = this@Rectangle.friction
+        bd.type = bodyType
+        bd.setPosition(x, y)
     }
 
     /**
@@ -39,13 +40,13 @@ class Rectangle(x: Number = 0,
     override fun initBody() {
         body = world.createBody(bd)
         body.createFixture(fixture)
-        body.setTransform(Vec2(x.toFloat(), y.toFloat()), angle = 0f)
         body.setViewWithContainer(SolidRect(width, height, fillColor).position(x, y))
-        println(body.position)
+
     }
 
     override fun animate() {
     }
+
 
 }
 
