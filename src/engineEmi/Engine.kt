@@ -24,59 +24,56 @@ import kotlin.reflect.*
 
 object Engine {
 
-    var views = mutableListOf<CanvasElement>()
-    suspend fun main() = Korge(quality = GameWindow.Quality.PERFORMANCE, title = "Engine Emi") {
-       // setupCircle()
-        worldView{
-            position(400, 400).scale(20)
-            addBody()
-        }
-    }
+    var canvasElements = mutableListOf<CanvasElement>()
+    var bodies = mutableListOf<Ebody>()
 
-    fun Stage.setupCircle() {
-        Engine.views.map { addChild(it) }
-        launch {
-            while (true) {
-                Engine.views.map { it.animate() }
-                delay(16.milliseconds)
+
+    suspend fun main() = Korge(quality = GameWindow.Quality.PERFORMANCE, title = "Engine Emi") {
+
+        // Physik
+        if (!Engine.bodies.isEmpty()) {
+            worldView {
+                position(400, 400).scale(20)
+                bodies.map { registerBodyWithWorld(it) }
+                bodies.map { it }
+                bodies.map { it.animate() }
             }
         }
-    }
 
-    fun WorldView.addBody(){
-        val k = Kreis2(0.0,15.0, radius = 2F, fillColor = Colors.GREEN)
+        // Physikfreie Zone
+        if (!Engine.canvasElements.isEmpty()) {
+            launch {
+                while (true) {
+                    Engine.bodies.map { it.animate() }
+                    delay(16.milliseconds)
+                }
+            }
+        }
 
-       createBody {
-           type = k.type
-           setPosition(k.x, k.y)
-       }.fixture {
-           shape = k.shape
-           density = k.density
-           friction = k.friction
-       }.setView(
-               graphics{
-                   fillStroke(Context2d.Color(Colors.BLUE), Context2d.Color(Colors.RED), Context2d.StrokeInfo(thickness = 30.0)) {
-                       circle(k.x, k.y, k.radius)
-                       //rect(0, 0, 400, 20)
-                   }
-                   fill(k.fillColor) {
-                       circle(k.x, k.y, k.radius)
-                   }
-                   scale(1f / 100f)
-               }
-       )
 
     }
 
-    fun registerCanvasElement(canvasElement: CanvasElement){
-    //        println("DEPRECATED/ÜBERHOLT: Verwenden Sie stattdessen registerElement()" )
-        views.add(canvasElement)
+
+    fun WorldView.registerBodyWithWorld(body: Ebody) {
+        body.initForWorld(this.world)
+
     }
 
-    /*fun registerElement(view : View){
-        views.add(view)
-    }*/
+    fun registerCanvasElement(canvasElement: CanvasElement) {
+        canvasElements.add(canvasElement)
+    }
 
+    fun registerBody(body: Ebody) {
+        bodies.add(body)
+    }
 
+    fun register(o : Any){
+        if (o is Ebody)
+            registerBody(o)
+        else if (o is CanvasElement)
+            registerCanvasElement(o)
+        else
+            Log.log("Objekt ${o} vom Typ ${o::class} kann nicht registriert werden.")
+    }
 
 }
