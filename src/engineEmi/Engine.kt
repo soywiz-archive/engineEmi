@@ -30,9 +30,13 @@ object Engine {
 
         if (!bodies.isEmpty()) {
             worldView {
-                position(400, 400).scale(1)
+                position(400, 400).scale(20)
+                // X: -20 bis +50
+                // Y: -20 bis +20
+
                 bodies.map { registerBodyWithWorld(it) }
                 bodies.onEach { it.body }
+
 
             }
 
@@ -53,20 +57,20 @@ object Engine {
     }
 
 
-    fun WorldView.registerBodyWithWorld(body: Ebody) {
+    suspend fun WorldView.registerBodyWithWorld(body: Ebody) {
         body.initForWorld(this.world)
 
     }
 
-    fun registerCanvasElement(canvasElement: CanvasElement) {
+    suspend fun registerCanvasElement(canvasElement: CanvasElement) {
         canvasElements.add(canvasElement)
     }
 
-    fun registerBody(body: Ebody) {
+    suspend fun registerBody(body: Ebody) {
         bodies.add(body)
     }
 
-    fun register(o: Any) {
+    suspend fun register(o: Any) {
         if (o is Ebody)
             registerBody(o)
         else if (o is CanvasElement)

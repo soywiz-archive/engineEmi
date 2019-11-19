@@ -15,6 +15,7 @@ class Rectangle(x: Number = 0,
                 var angle: Float = 0f,
                 var density: Float = 1f,
                 var friction: Float = 0.2f,
+                var restitution: Float = 0.0f,
                 var strokeColor: RGBA = Colors.BLUE,
                 var strokeThickness: Double = 0.0
 ) : Ebody(x = x, y = y) {
@@ -29,9 +30,12 @@ class Rectangle(x: Number = 0,
         fixture.density = density
         fixture.shape = this@Rectangle.shape
         fixture.friction = this@Rectangle.friction
+        fixture.restitution = this@Rectangle.restitution
         bd.type = bodyType
         bd.setPosition(x, y)
         bd.angle = angle
+
+
     }
 
     /**
@@ -44,10 +48,9 @@ class Rectangle(x: Number = 0,
         body = world.createBody(bd)
         body.createFixture(fixture)
         val view = SolidRect(width, height, fillColor)
-        view.position(x, y)
+        view.anchor(.5, .5)
         view.apply { onOver { writeInfo() } }
         body.setView(view)
-
     }
 
     override fun animate() {
