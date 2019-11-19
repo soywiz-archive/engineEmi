@@ -1,10 +1,12 @@
 package engineEmi
 
+import com.soywiz.klock.*
 import com.soywiz.korge.*
 import com.soywiz.korge.box2d.*
 import com.soywiz.korge.view.*
 import com.soywiz.korgw.*
 import com.soywiz.korim.color.*
+import com.soywiz.korio.async.*
 import engineEmi.Bodies.*
 
 
@@ -31,14 +33,12 @@ object Engine {
                 position(400, 400).scale(1)
                 bodies.map { registerBodyWithWorld(it) }
                 bodies.onEach { it.body }
-            }
-
 
             }
+
 
         }
-
-    /* // Physikfreie Zone
+        //Physikfreie Zone
      if (!canvasElements.isEmpty()) {
          canvasElements.map { it.prepareElement() }
          canvasElements.map { addChild(it) }
@@ -48,8 +48,9 @@ object Engine {
                  delay(16.milliseconds)
              }
          }
-     }*/
 
+     }
+    }
 
 
     fun WorldView.registerBodyWithWorld(body: Ebody) {

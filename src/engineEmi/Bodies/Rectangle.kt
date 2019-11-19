@@ -1,6 +1,7 @@
 package engineEmi.Bodies
 
 import com.soywiz.korge.box2d.*
+import com.soywiz.korge.input.*
 import com.soywiz.korge.view.*
 import com.soywiz.korim.color.*
 import org.jbox2d.dynamics.*
@@ -11,6 +12,7 @@ class Rectangle(x: Number = 0,
                 var height: Number = 0,
                 bodyType: BodyType = BodyType.STATIC,
                 var fillColor: RGBA,
+                var angle: Float = 0f,
                 var density: Float = 1f,
                 var friction: Float = 0.2f,
                 var strokeColor: RGBA = Colors.BLUE,
@@ -29,6 +31,7 @@ class Rectangle(x: Number = 0,
         fixture.friction = this@Rectangle.friction
         bd.type = bodyType
         bd.setPosition(x, y)
+        bd.angle = angle
     }
 
     /**
@@ -40,12 +43,22 @@ class Rectangle(x: Number = 0,
     override fun initBody() {
         body = world.createBody(bd)
         body.createFixture(fixture)
-        body.setViewWithContainer(SolidRect(width, height, fillColor).position(x, y))
+        val view = SolidRect(width, height, fillColor)
+        view.position(x, y)
+        view.apply { onOver { writeInfo() } }
+        body.setView(view)
 
     }
 
     override fun animate() {
+        writeInfo()
     }
+
+    fun writeInfo() {
+        println("Body: ${this.body.position.x}, ${this.body.position.y}")
+        println("View: ${this.body.view!!.x}, ${this.body.view!!.y}")
+    }
+
 
 
 }

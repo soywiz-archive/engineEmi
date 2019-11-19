@@ -4,9 +4,9 @@
     <facet type="kotlin-language" name="Kotlin">
       <configuration version="3" platform="Native " allPlatforms="Native []" useProjectSettings="false" isTestModule="true" externalProjectId="engineEmi">
         <sourceSets>
-          <sourceSet>engineEmi.macosX64Main</sourceSet>
-          <sourceSet>engineEmi.commonMain</sourceSet>
           <sourceSet>engineEmi.commonTest</sourceSet>
+          <sourceSet>engineEmi.commonMain</sourceSet>
+          <sourceSet>engineEmi.macosX64Main</sourceSet>
         </sourceSets>
         <newMppModelJpsModuleKind>COMPILATION_AND_SOURCE_SET_HOLDER</newMppModelJpsModuleKind>
         <compilerSettings />

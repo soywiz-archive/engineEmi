@@ -26,16 +26,18 @@ suspend fun main() {
     // val boden = Rectangle(x = -20.0, y = 10.0, width = 200f, height = 50f, fillColor = Colors.RED, bodyType = BodyType.STATIC)
     //val dach = Rectangle(x = 0.0, y = 70.0, width = 200f, height = 10.0f, fillColor = Colors.BLUE, bodyType = BodyType.DYNAMIC)
 
-    val test = Rectangle(x = 0, y = -150, width = 100, height = 20, density = 0f, fillColor = Colors.RED)
+    val test = Rectangle(x = 400, y = 300, width = 10, height = 10, density = 1f, fillColor = Colors.RED, bodyType = BodyType.DYNAMIC)
+    val test2 = Rectangle(x = 0, y = 100, width = 1000, angle = 6f, height = 10, density = 1f, fillColor = Colors.BLUE, bodyType = BodyType.STATIC)
 
-    repeat(50) {
-        Engine.registerBody(Rectangle((1..200).random(), (-100..100).random(), width = 10, height = 10, density = 0f, fillColor = Colors.GREEN, bodyType = BodyType.DYNAMIC))
+    repeat(1000) {
+        Engine.registerBody(Rectangle((-1000..1000).random(), (100..200).random(), width = 10, height = 10, density = 1f, fillColor = Colors.GREEN, bodyType = BodyType.DYNAMIC))
     }
 
 
     // Engine.registerBody(k2)
 
     Engine.registerBody(test)
+    Engine.registerBody(test2)
     //Engine.registerBody(test2)
 
 
