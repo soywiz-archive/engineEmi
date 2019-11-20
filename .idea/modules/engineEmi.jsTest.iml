@@ -2,11 +2,11 @@
 <module version="4">
   <component name="FacetManager">
     <facet type="kotlin-language" name="Kotlin">
-      <configuration version="3" platform="JavaScript " allPlatforms="JS []" useProjectSettings="false" isTestModule="true" externalProjectId="engineEmi">
+      <configuration version="3" platform="JavaScript " useProjectSettings="false" isTestModule="true" externalProjectId="engineEmi">
         <sourceSets>
+          <sourceSet>engineEmi.jsMain</sourceSet>
           <sourceSet>engineEmi.commonMain</sourceSet>
           <sourceSet>engineEmi.commonTest</sourceSet>
-          <sourceSet>engineEmi.jsMain</sourceSet>
         </sourceSets>
         <newMppModelJpsModuleKind>COMPILATION_AND_SOURCE_SET_HOLDER</newMppModelJpsModuleKind>
         <compilerSettings />

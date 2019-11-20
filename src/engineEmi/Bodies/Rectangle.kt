@@ -13,57 +13,43 @@ class Rectangle(x: Number = 0,
                 bodyType: BodyType = BodyType.STATIC,
                 var fillColor: RGBA,
                 var angle: Float = 0f,
-                var density: Float = 1f,
-                var friction: Float = 0.2f,
-                var restitution: Float = 0.0f,
+                density: Float = 1f,
+                friction: Float = 0.2f,
+                restitution: Float = 0.0f,
                 var strokeColor: RGBA = Colors.BLUE,
                 var strokeThickness: Double = 0.0
-) : Ebody(x = x, y = y) {
+) : Ebody(x = x, y = y, density = density, friction = friction, restitution = restitution, bodyType = bodyType
+) {
 
-    private val shape = BoxShape(width = width, height = height)
-    private val bd = BodyDef()
-    private var fixture = FixtureDef()
-
+    override val shape = BoxShape(width = width, height = height)
+    override val bd = BodyDef()
+    override var fixture = FixtureDef()
     override lateinit var body: Body
+    override lateinit var view: View
 
     init {
-        fixture.density = density
-        fixture.shape = this@Rectangle.shape
-        fixture.friction = this@Rectangle.friction
-        fixture.restitution = this@Rectangle.restitution
-        bd.type = bodyType
-        bd.setPosition(x, y)
+        createFixture()
+        createBodyAttachToFixture()
         bd.angle = angle
-
-
     }
 
     /**
-     * Bei der Erstellung des Bodies ist die world noch nicht bekannt. Diese wird erst beim erzeugen des Korge
-     * Objekts erstellt. Nach dem die Welt erstellt ist, wird initBody() aufgerufen, um das Body Objekt
-     * fertig zu initialiseren
-     *
+     * Erzeugt den eigentlichen View
      */
-    override fun initBody() {
-        body = world.createBody(bd)
-        body.createFixture(fixture)
-        val view = SolidRect(width, height, fillColor)
-        view.anchor(.5, .5)
-        view.apply { onOver { writeInfo() } }
-        body.setView(view)
-    }
 
-    override fun animate() {
-        writeInfo()
+    override fun createView() {
+        view = SolidRect(width, height, fillColor).apply { anchor(.5, .5) }
+        view.apply {
+            onOver {
+                //writeInfo()
+            }
+        }
     }
 
     fun writeInfo() {
         println("Body: ${this.body.position.x}, ${this.body.position.y}")
         println("View: ${this.body.view!!.x}, ${this.body.view!!.y}")
     }
-
-
-
 }
 
 
