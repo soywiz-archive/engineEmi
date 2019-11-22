@@ -18,6 +18,13 @@ object Engine {
         private set
     var viewWidth = 0.0
         private set
+    var showCoords = false
+
+
+    suspend fun run(showCoords: Boolean = false) {
+        this.showCoords = showCoords
+        main()
+    }
 
     suspend fun main() = Korge(quality = GameWindow.Quality.PERFORMANCE, title = "Engine Emi") {
 
@@ -28,20 +35,27 @@ object Engine {
         // Physik
 
 
-        if (!bodies.isEmpty()) {
-            worldView {
-                position(400, 400).scale(20)
+        worldView {
+            position(400, 400).scale(10)
                 // X: -20 bis +50
                 // Y: -20 bis +20
 
-                bodies.map { registerBodyWithWorld(it) }
-                bodies.onEach { it.body }
+            if (showCoords) {
+                Log.log("Zeige Koordinatensystem")
+                val coordSystem = listOf(Line(-50, 0, 150, 0, fillColor = Colors.YELLOW, thickness = 10))
 
+                coordSystem.onEach { registerBodyWithWorld(it) }
+                coordSystem.onEach { it.body }
 
             }
 
+            if (!bodies.isEmpty()) {
+                bodies.onEach { registerBodyWithWorld(it) }
+                bodies.onEach { it.body }
+            }
+            }
 
-        }
+
         //Physikfreie Zone
      if (!canvasElements.isEmpty()) {
          canvasElements.map { it.prepareElement() }

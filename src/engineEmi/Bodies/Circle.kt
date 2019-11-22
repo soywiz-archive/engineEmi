@@ -23,14 +23,9 @@ class Circle(x: Number = 0,
 ) {
 
     override val shape = CircleShape().apply { m_radius = radius.toFloat() }
-    override val bd = BodyDef()
-    override var fixture = FixtureDef()
-    override lateinit var body: Body
-    override lateinit var view: View
 
     init {
-        createFixture()
-        createBodyAttachToFixture()
+        setup()
         bd.angle = angle
     }
 

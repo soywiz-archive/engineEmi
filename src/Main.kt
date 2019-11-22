@@ -32,7 +32,9 @@ suspend fun main() {
     val boden3 = Rectangle(x = 0, y = -20, width = 100, height = 1, density = 1f, angle = 0.5f, fillColor = Colors.LIGHTCORAL, bodyType = BodyType.KINEMATIC)
 
 
-    val cic = Circle(100, 100, 1f, BodyType.DYNAMIC, Colors.RED)
+
+
+
     repeat(100) {
         Engine.registerBody(Rectangle((-50..50).random(), (30..50).random(), restitution = 0.8f, width = 2, height = 2, density = ((0..100).random().toFloat() / (1..10).random().toFloat()), fillColor = Colors.GREEN, bodyType = BodyType.DYNAMIC))
         Engine.registerBody(Circle((-50..50).random(), (30..50).random(), 1, bodyType = BodyType.DYNAMIC, fillColor = Colors.PINK, density = 0.5f))
@@ -43,13 +45,15 @@ suspend fun main() {
 
     //Engine.registerBody(test)
 
-    Engine.registerBody(boden)
-    Engine.registerBody(boden2)
+    // Engine.registerBody(boden)
+    // Engine.registerBody(line)
+    // Engine.registerBody(boden2)
     Engine.registerBody(boden3)
+    Engine.registerBody(Line(0, 0, 80, 0, fillColor = Colors.AQUA, thickness = 10))
     //Engine.registerBody(test2)
 
 
-    Engine.main()
+    Engine.run()
 
 
 }

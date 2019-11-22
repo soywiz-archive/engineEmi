@@ -19,16 +19,21 @@ abstract class Ebody(
      * -> s. Box2D body
      */
     abstract val shape: Shape
-    abstract val bd: BodyDef
-    abstract var fixture: FixtureDef
-    abstract var body: Body
-    abstract val view: View
+    val bd = BodyDef()
+    var fixture = FixtureDef()
+    lateinit var body: Body
+    lateinit var view: View
 
     lateinit var world: World
 
     open fun initForWorld(world: World) {
         this.world = world
         initBody()
+    }
+
+    fun setup() {
+        createFixture()
+        createBodyAttachToFixture()
     }
 
     /**
