@@ -8,13 +8,13 @@ import org.jbox2d.dynamics.*
 suspend fun main() {
 
    // val circle = Circle(radius = 32.0)
-    //val meinKreis = Kreis(x = 100.0, y = 100.0, radius = 20.0, fillColor = Colors.LIGHTCORAL)
-    val meinRechteck = Rechteck(100.0, 100.0, x = 100.0, y = 100.0, fillColor = Colors.GREEN)
-    val meineGerade = Gerade(100.0, 200.0, 10.0, 10.0)
+    val meinKreis = Kreis(x = 100.0, y = 100.0, radius = 20.0, fuellFarbe = Colors.LIGHTCORAL)
+    val meinRechteck = Rechteck(100.0, 100.0, x = 100.0, y = 100.0, fuellFarbe = Colors.GREEN)
+    val meineGerade = Gerade(100.0, 200.0, 10.0, 10.0, 0.5, Colors.BEIGE)
     // val meinBild = Bild(100.0, 200.0, "korge.png")
-    //Engine.registerCanvasElement(meinKreis)
-    //Engine.registerCanvasElement(meineGerade)
-    //  Engine.registerCanvasElement(meinRechteck)
+    Engine.registerCanvasElement(meinKreis)
+    Engine.registerCanvasElement(meineGerade)
+    Engine.registerCanvasElement(meinRechteck)
     //Engine.registerCanvasElement(meinBild)
 
    // Engine.registerCanvasElement(circle)
@@ -27,8 +27,8 @@ suspend fun main() {
     //val dach = Rectangle(x = 0.0, y = 70.0, width = 200f, height = 10.0f, fillColor = Colors.BLUE, bodyType = BodyType.DYNAMIC)
 
     // val test = Rectangle(x = 400, y = 300, width = 10, height = 10, density = 1f, fillColor = Colors.RED, bodyType = BodyType.DYNAMIC)
-    val boden = Rectangle(x = -0, y = 0, width = 10, height = 10, density = 1f, fillColor = Colors.BLUE, bodyType = BodyType.KINEMATIC)
-    val boden2 = Rectangle(x = 30, y = 0, width = 10, height = 10, density = 1f, angle = 45f, fillColor = Colors.RED, bodyType = BodyType.KINEMATIC)
+    //val boden = Rectangle(x = -0, y = 0, width = 10, height = 10, density = 1f, fillColor = Colors.BLUE, bodyType = BodyType.KINEMATIC)
+    //val boden2 = Rectangle(x = 30, y = 0, width = 10, height = 10, density = 1f, angle = 45f, fillColor = Colors.RED, bodyType = BodyType.KINEMATIC)
     val boden3 = Rectangle(x = 0, y = -20, width = 100, height = 1, density = 1f, angle = 0.5f, fillColor = Colors.LIGHTCORAL, bodyType = BodyType.KINEMATIC)
 
 

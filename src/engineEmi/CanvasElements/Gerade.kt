@@ -2,39 +2,38 @@
 package engineEmi.CanvasElements
 
 import com.soywiz.korim.color.*
-import engineEmi.*
+import com.soywiz.korim.vector.*
 
-open class Gerade(var toX: Double = 0.0,
-                  var toY: Double = 0.0,
-                  x: Double = 0.0,
-                  y: Double = 0.0,
-                  fillColor: RGBA = Colors.GREEN,
-                  strokeColor: RGBA = Colors.GREEN) : CanvasElement(x = x, y = y) {
+open class Gerade(var toX: Number = 0.0,
+                  var toY: Number = 0.0,
+                  x: Number = 0.0,
+                  y: Number = 0.0,
+                  var dicke: Number = 10,
+                  fuellFarbe: RGBA = Colors.GREEN,
+                  randFarbe: RGBA = Colors.GREEN) : CanvasElement(x = x, y = y) {
 
-    var fillColor: RGBA = fillColor
+    var fillColor: RGBA = fuellFarbe
         set(value) {
             field = value; updateGraphics()
         }
 
-    var strokeColor: RGBA = strokeColor
+    var strokeColor: RGBA = randFarbe
         set(value) {
             field = value; updateGraphics()
         }
 
     init {
         updateGraphics()
-        super.width = toX - x
-        super.height = toY - y
     }
 
     final override fun updateGraphics() {
         graphics.apply {
             clear()
-            fill(fillColor) {
-                lineTo(toX, toY)
+            fillStroke(Context2d.Color(fillColor), Context2d.Color(fillColor), Context2d.StrokeInfo(thickness = dicke.toDouble())) { moveTo(x, y); lineTo(x + toX.toDouble(), y + toY.toDouble()) }
             }
         }
-    }
-
 }
+
+
+
 

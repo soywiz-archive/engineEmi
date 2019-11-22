@@ -1,33 +1,33 @@
-package engineEmi
+package engineEmi.CanvasElements
 
 import com.soywiz.korge.view.*
 import com.soywiz.korim.color.*
 import com.soywiz.korma.geom.vector.*
 
 
-open class Rechteck(height: Double = 0.0,
-                    width: Double = 0.0,
-                    x: Double = 0.0,
-                    y: Double = 0.0,
-                    fillColor: RGBA = Colors.GREEN,
-                    strokeColor: RGBA = Colors.RED
+open class Rechteck(height: Number = 0.0,
+                    width: Number = 0.0,
+                    x: Number = 0.0,
+                    y: Number = 0.0,
+                    fuellFarbe: RGBA = Colors.GREEN,
+                    randFarbe: RGBA = Colors.RED
 ) : CanvasElement(x = x, y = y) {
 
 
-    var fillColor: RGBA = fillColor
+    var fillColor: RGBA = fuellFarbe
         set(value) {
             field = value; updateGraphics()
         }
 
-    var strokeColor: RGBA = strokeColor
+    var strokeColor: RGBA = randFarbe
         set(value) {
             field = value; updateGraphics()
         }
 
     init {
         updateGraphics()
-        super.width = width
-        super.height = height
+        super.width = width.toDouble()
+        super.height = height.toDouble()
     }
 
     final override fun updateGraphics() {

@@ -1,28 +1,28 @@
-package engineEmi
+package engineEmi.CanvasElements
 
 import com.soywiz.korim.color.*
 import com.soywiz.korma.geom.vector.*
 
 
-open class Kreis(radius: Double = 10.0,
-                 x: Double = 100.0,
-                 y: Double = 100.0,
-                 fillColor: RGBA = Colors.GREEN,
-                 strokeColor: RGBA = Colors.RED
+open class Kreis(radius: Number = 10.0,
+                 x: Number = 100.0,
+                 y: Number = 100.0,
+                 fuellFarbe: RGBA = Colors.GREEN,
+                 randFarbe: RGBA = Colors.RED
 ) : CanvasElement(x = x, y = y) {
 
 
-    var radius: Double = radius
+    var radius: Number = radius
         set(value) {
             field = value; updateGraphics()
         }
 
-    var fillColor: RGBA = fillColor
+    var fillColor: RGBA = fuellFarbe
         set(value) {
             field = value; updateGraphics()
         }
 
-    var strokeColor: RGBA = strokeColor
+    var strokeColor: RGBA = randFarbe
         set(value) {
             field = value; updateGraphics()
         }

@@ -8,6 +8,7 @@ import com.soywiz.korgw.*
 import com.soywiz.korim.color.*
 import com.soywiz.korio.async.*
 import engineEmi.Bodies.*
+import engineEmi.CanvasElements.*
 
 
 object Engine {
@@ -71,20 +72,20 @@ object Engine {
     }
 
 
-    suspend fun WorldView.registerBodyWithWorld(body: Ebody) {
+    fun WorldView.registerBodyWithWorld(body: Ebody) {
         body.initForWorld(this.world)
 
     }
 
-    suspend fun registerCanvasElement(canvasElement: CanvasElement) {
+    fun registerCanvasElement(canvasElement: CanvasElement) {
         canvasElements.add(canvasElement)
     }
 
-    suspend fun registerBody(body: Ebody) {
+    fun registerBody(body: Ebody) {
         bodies.add(body)
     }
 
-    suspend fun register(o: Any) {
+    fun register(o: Any) {
         if (o is Ebody)
             registerBody(o)
         else if (o is CanvasElement)

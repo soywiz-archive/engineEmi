@@ -1,4 +1,4 @@
-package engineEmi
+package engineEmi.CanvasElements
 
 import com.soywiz.klock.*
 import com.soywiz.korge.tween.*
@@ -9,9 +9,9 @@ import com.soywiz.korma.geom.*
 import com.soywiz.korma.interpolation.*
 
 
-open class Bild(x: Double = 100.0,
-                y: Double = 100.0,
-                var imageFile: String
+open class Bild(x: Number = 100.0,
+                y: Number = 100.0,
+                var bildDatei: String
 ) : CanvasElement(x = x, y = y) {
 
 
@@ -36,7 +36,7 @@ open class Bild(x: Double = 100.0,
 
     override suspend fun prepareElement() {
         super.prepareElement()
-        image(resourcesVfs[imageFile].readBitmap()) {
+        image(resourcesVfs[bildDatei].readBitmap()) {
             position(x, y)
         }
 
