@@ -40,7 +40,6 @@ abstract class Ebody(
      * Bei der Erstellung des Bodies ist die world noch nicht bekannt. Diese wird erst beim erzeugen des Korge
      * Objekts erstellt. Nach dem die Welt erstellt ist, wird initBody() aufgerufen, um das Body Objekt
      * fertig zu initialiseren
-     *
      */
 
     open fun initBody() {
