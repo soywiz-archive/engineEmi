@@ -21,7 +21,8 @@ class Image(x: Number = 0,
             restitution: Float = 0.0f,
             var strokeColor: RGBA = Colors.BLUE,
             var strokeThickness: Double = 0.0,
-            var scale: Float = 1f / 100f
+            var scale: Float = 1f / 100f,
+            val preInitializedBitmap: Bitmap? = null
 ) : Ebody(x = x, y = y, density = density, friction = friction, restitution = restitution, bodyType = bodyType
 ) {
     lateinit var image: Bitmap
@@ -33,13 +34,10 @@ class Image(x: Number = 0,
     }
 
     override suspend fun initBody() {
-        image = resourcesVfs[imageFile].readBitmap()
-        this.width = image.width * scale
-        this.height = image.height * scale
+        image = preInitializedBitmap ?: resourcesVfs[imageFile].readBitmap()
+        width = image.width * scale
+        height = image.height * scale
         shape = BoxShape(width = width, height = height)
-        println("$width, $height")
-
-
         body = world.createBody(bd)
         fixture.density = density
         fixture.shape = shape

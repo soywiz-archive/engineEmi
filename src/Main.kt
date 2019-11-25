@@ -32,13 +32,12 @@ suspend fun main() {
     val boden3 = Rectangle(x = 0, y = -20, width = 100, height = 1, density = 1f, angle = 0.5f, fillColor = Colors.LIGHTCORAL, bodyType = BodyType.KINEMATIC)
 
 
-    val meinBild = Image(x = 10, y = 10, imageFile = "hutGruen.png", bodyType = BodyType.DYNAMIC, density = 0.5f, friction = 0.3f)
-    Engine.register(meinBild)
+    //val image = resourcesVfs["hut.png"].readBitmapNoNative()
 
-
-    repeat(100) {
-        Engine.registerBody(Rectangle((-50..50).random(), (30..50).random(), restitution = 0.8f, width = 2, height = 2, density = ((0..100).random().toFloat() / (1..10).random().toFloat()), fillColor = Colors.GREEN, bodyType = BodyType.DYNAMIC))
-        Engine.registerBody(Circle((-50..50).random(), (30..50).random(), 1, bodyType = BodyType.DYNAMIC, fillColor = Colors.PINK, density = 0.5f))
+    repeat(500) {
+        // Engine.registerBody(Rectangle((-50..50).random(), (30..50).random(), restitution = 0.8f, width = 2, height = 2, density = ((0..100).random().toFloat() / (1..10).random().toFloat()), fillColor = Colors.GREEN, bodyType = BodyType.DYNAMIC))
+        //Engine.registerBody(Circle((-50..50).random(), (30..50).random(), 1, bodyType = BodyType.DYNAMIC, fillColor = Colors.PINK, density = 0.5f))
+        Engine.registerBody(Image(x = (-50..50).random(), y = (30..50).random(), bodyType = BodyType.DYNAMIC, density = 0.5f, friction = 0.3f, imageFile = "hut.png"))
     }
 
 

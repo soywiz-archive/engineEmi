@@ -44,7 +44,7 @@ object Engine {
             if (showCoords) {
                 Log.log("Zeige Koordinatensystem")
                 val coordSystem = listOf(Line(-50, 0, 150, 0, fillColor = Colors.YELLOW, thickness = 10))
-
+                this.world.isLocked
                 coordSystem.onEach { registerBodyWithWorld(it) }
                 coordSystem.onEach { it.body }
 
