@@ -1,7 +1,6 @@
 package engineEmi.Bodies
 
 import com.soywiz.korge.box2d.*
-import com.soywiz.korge.input.*
 import com.soywiz.korge.view.*
 import com.soywiz.korim.color.*
 import com.soywiz.korma.geom.vector.*
@@ -22,6 +21,7 @@ class Circle(x: Number = 0,
 ) : Ebody(x = x, y = y, density = density, friction = friction, restitution = restitution, bodyType = bodyType
 ) {
 
+
     override val shape = CircleShape().apply { m_radius = radius.toFloat() }
 
     init {
@@ -34,14 +34,7 @@ class Circle(x: Number = 0,
      */
 
     override suspend fun createView() {
-
-        view = Graphics().apply { fill(fillColor) { circle(x, y, radius.toFloat() * 100) } }.scale(1f / 100f)
-
-        view.apply {
-            onOver {
-                //writeInfo()
-            }
-        }
+        view = Graphics(autoScaling = true).apply { fill(fillColor) { circle(x, y, radius.toFloat()) } }
     }
 
     fun writeInfo() {

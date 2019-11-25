@@ -1,42 +1,33 @@
 import com.soywiz.korge.gradle.*
 
-
 buildscript {
-
-
     repositories {
         jcenter()
         mavenLocal()
-        maven { url = uri("https://dl.bintray.com/soywiz/soywiz") }
+        maven { url = uri("https://dl.bintray.com/korlibs/korlibs") }
         maven { url = uri("https://plugins.gradle.org/m2/") }
         mavenCentral()
     }
     dependencies {
-        classpath("com.soywiz:korge-gradle-plugin:1.2.0")
-
+        classpath("com.soywiz.korlibs.korge.plugins:korge-gradle-plugin:1.4.0")
     }
 }
 
 apply(plugin = "korge")
 
-
-
 korge {
-    id = "com.soywiz.sample1"
-    name = "Sample1"
-    description = "A sample using Korge and the gradle plugin"
+    id = "me.emig.engineEmi"
+    name = "EngineEmi"
+    description = ""
     orientation = Orientation.LANDSCAPE
     jvmMainClassName = "MainKt"
-
-
-
-    admob("ca-app-pub-xxxxxxxx~yyyyyy")
 
     supportShapeOps()
     supportTriangulation()
     supportDragonbones()
     supportBox2d()
 }
+
 
 
 tasks.register<Copy>("copyHtmlToBuildfolder"){
@@ -50,13 +41,13 @@ tasks.register<Copy>("copyHtmlToBuildfolder"){
 
 tasks.register<DefaultTask>("openInBrowser"){
     group = "engineemi"
- //   dependsOn("compileKotlinJs")
-  //  dependsOn("genResources")
-   // dependsOn("jsProcessResources")
-   // dependsOn("jsMainClasses")
-   // dependsOn("jsJar")
-   // dependsOn("jsWeb")
-   // dependsOn("copyHtmlToBuildfolder")
+    //   dependsOn("compileKotlinJs")
+    //  dependsOn("genResources")
+    // dependsOn("jsProcessResources")
+    // dependsOn("jsMainClasses")
+    // dependsOn("jsJar")
+    // dependsOn("jsWeb")
+    // dependsOn("copyHtmlToBuildfolder")
 
 
     dependsOn("jsWebRun")
@@ -85,4 +76,5 @@ tasks.register<DefaultTask>("openLocal"){
 //kotlin.sourceSets["commonMain"].resources.srcDir("src")
 kotlin.sourceSets["commonMain"].kotlin.srcDir("src")
 kotlin.sourceSets["commonMain"].resources.srcDir("resources")
+
 

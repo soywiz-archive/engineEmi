@@ -15,7 +15,7 @@ abstract class CanvasElement(
     }
 
 
-    val graphics = graphics {
+    val graphics = sgraphics {
     }
 
     var posX = x

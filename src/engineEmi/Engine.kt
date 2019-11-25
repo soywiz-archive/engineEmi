@@ -34,7 +34,7 @@ object Engine {
 
         views.clearColor = Colors.DIMGRAY
         // Physik
-
+        sgraphics()
 
         worldView {
             position(400, 400).scale(10)
@@ -54,7 +54,9 @@ object Engine {
                 bodies.onEach { registerBodyWithWorld(it) }
                 bodies.onEach { it.body }
             }
-            }
+
+
+        }
 
 
         //Physikfreie Zone

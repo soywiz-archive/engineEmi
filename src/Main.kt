@@ -1,20 +1,19 @@
 import com.soywiz.korim.color.*
 import engineEmi.*
 import engineEmi.Bodies.*
-import engineEmi.CanvasElements.*
 import org.jbox2d.dynamics.*
 
 
 suspend fun main() {
 
    // val circle = Circle(radius = 32.0)
-    val meinKreis = Kreis(x = 100.0, y = 100.0, radius = 20.0, fuellFarbe = Colors.LIGHTCORAL)
-    val meinRechteck = Rechteck(100.0, 100.0, x = 100.0, y = 100.0, fuellFarbe = Colors.GREEN)
-    val meineGerade = Gerade(100.0, 200.0, 10.0, 10.0, 0.5, Colors.BEIGE)
+    // val meinKreis = Kreis(x = 100.0, y = 100.0, radius = 20.0, fuellFarbe = Colors.LIGHTCORAL)
+    // val meinRechteck = Rechteck(100.0, 100.0, x = 100.0, y = 100.0, fuellFarbe = Colors.GREEN)
+    // val meineGerade = Gerade(100.0, 200.0, 10.0, 10.0, 0.5, Colors.BEIGE)
     // val meinBild = Bild(100.0, 200.0, "korge.png")
-    Engine.registerCanvasElement(meinKreis)
-    Engine.registerCanvasElement(meineGerade)
-    Engine.registerCanvasElement(meinRechteck)
+    //Engine.registerCanvasElement(meinKreis)
+    //Engine.registerCanvasElement(meineGerade)
+    //Engine.registerCanvasElement(meinRechteck)
     //Engine.registerCanvasElement(meinBild)
 
    // Engine.registerCanvasElement(circle)
@@ -27,17 +26,18 @@ suspend fun main() {
     //val dach = Rectangle(x = 0.0, y = 70.0, width = 200f, height = 10.0f, fillColor = Colors.BLUE, bodyType = BodyType.DYNAMIC)
 
     // val test = Rectangle(x = 400, y = 300, width = 10, height = 10, density = 1f, fillColor = Colors.RED, bodyType = BodyType.DYNAMIC)
-    //val boden = Rectangle(x = -0, y = 0, width = 10, height = 10, density = 1f, fillColor = Colors.BLUE, bodyType = BodyType.KINEMATIC)
-    //val boden2 = Rectangle(x = 30, y = 0, width = 10, height = 10, density = 1f, angle = 45f, fillColor = Colors.RED, bodyType = BodyType.KINEMATIC)
+    val boden = Rectangle(x = -0, y = 0, width = 10, height = 10, density = 1f, fillColor = Colors.BLUE, bodyType = BodyType.KINEMATIC)
+    val boden2 = Rectangle(x = 30, y = 0, width = 10, height = 10, density = 1f, angle = 45f, fillColor = Colors.RED, bodyType = BodyType.KINEMATIC)
     val boden3 = Rectangle(x = 0, y = -20, width = 100, height = 1, density = 1f, angle = 0.5f, fillColor = Colors.LIGHTCORAL, bodyType = BodyType.KINEMATIC)
 
 
     //val image = resourcesVfs["hut.png"].readBitmapNoNative()
 
     repeat(500) {
-        // Engine.registerBody(Rectangle((-50..50).random(), (30..50).random(), restitution = 0.8f, width = 2, height = 2, density = ((0..100).random().toFloat() / (1..10).random().toFloat()), fillColor = Colors.GREEN, bodyType = BodyType.DYNAMIC))
-        //Engine.registerBody(Circle((-50..50).random(), (30..50).random(), 1, bodyType = BodyType.DYNAMIC, fillColor = Colors.PINK, density = 0.5f))
-        Engine.registerBody(Image(x = (-50..50).random(), y = (30..50).random(), bodyType = BodyType.DYNAMIC, density = 0.5f, friction = 0.3f, imageFile = "hut.png"))
+        Engine.registerBody(Rectangle((-50..50).random(), (30..50).random(), restitution = 0.8f, width = 2, height = 2, density = ((0..100).random().toFloat() / (1..10).random().toFloat()), fillColor = Colors.GREEN, bodyType = BodyType.DYNAMIC))
+        Engine.registerBody(Circle((-50..50).random(), (30..50).random(), 1, bodyType = BodyType.DYNAMIC, fillColor = Colors.PINK, density = 0.5f))
+        //  Engine.registerBody(Line((-50..50).random(), (-50..50).random(), (-50..50).random(), (-50..50).random(), BodyType.STATIC, Colors.LIGHTCORAL, 2))
+        //Engine.registerBody(Image(x = (-50..50).random(), y = (30..50).random(), bodyType = BodyType.DYNAMIC, density = 0.5f, friction = 0.3f, imageFile = "hut.png"))
     }
 
 
@@ -45,11 +45,11 @@ suspend fun main() {
 
     //Engine.registerBody(test)
 
-    // Engine.registerBody(boden)
+    //Engine.registerBody(boden)
     // Engine.registerBody(line)
     // Engine.registerBody(boden2)
-    Engine.registerBody(boden3)
-    Engine.registerBody(Line(0, 0, 80, 0, fillColor = Colors.AQUA, thickness = 10))
+    //Engine.registerBody(boden3)
+    Engine.registerBody(Line(0, 0, 80, 0, fillColor = Colors.AQUA, thickness = 1))
     //Engine.registerBody(test2)
 
 

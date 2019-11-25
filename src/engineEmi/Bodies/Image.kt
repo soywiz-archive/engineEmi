@@ -49,7 +49,7 @@ class Image(x: Number = 0,
     }
 
     override suspend fun createView() {
-        view = Graphics().image(image) {
+        view = Graphics(autoScaling = true).image(image) {
             position(x, y)
         }.scale(scale).anchor(.5, .5)
         view.apply {
