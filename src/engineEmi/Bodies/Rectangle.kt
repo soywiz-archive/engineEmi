@@ -33,7 +33,7 @@ class Rectangle(x: Number = 0,
      * Erzeugt den eigentlichen View
      */
 
-    override fun createView() {
+    override suspend fun createView() {
         view = SolidRect(width, height, fillColor).apply { anchor(.5, .5) }
         view.apply {
             onOver {

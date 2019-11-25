@@ -13,7 +13,7 @@ class Circle(x: Number = 0,
              var radius: Number = 0,
              bodyType: BodyType = BodyType.STATIC,
              var fillColor: RGBA,
-             var angle: Float = 0f,
+             angle: Float = 0f,
              density: Float = 1f,
              friction: Float = 0.2f,
              restitution: Float = 0.0f,
@@ -33,7 +33,7 @@ class Circle(x: Number = 0,
      * Erzeugt den eigentlichen View
      */
 
-    override fun createView() {
+    override suspend fun createView() {
 
         view = Graphics().apply { fill(fillColor) { circle(x, y, radius.toFloat() * 100) } }.scale(1f / 100f)
 

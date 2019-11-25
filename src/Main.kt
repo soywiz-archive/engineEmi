@@ -32,7 +32,7 @@ suspend fun main() {
     val boden3 = Rectangle(x = 0, y = -20, width = 100, height = 1, density = 1f, angle = 0.5f, fillColor = Colors.LIGHTCORAL, bodyType = BodyType.KINEMATIC)
 
 
-    val meinBild = Bild(100, 100, "hut.jpg", 0.5f)
+    val meinBild = Image(x = 10, y = 10, imageFile = "hutGruen.png", bodyType = BodyType.DYNAMIC, density = 0.5f, friction = 0.3f)
     Engine.register(meinBild)
 
 

@@ -26,7 +26,7 @@ abstract class Ebody(
 
     lateinit var world: World
 
-    open fun initForWorld(world: World) {
+    open suspend fun initForWorld(world: World) {
         this.world = world
         initBody()
     }
@@ -42,7 +42,7 @@ abstract class Ebody(
      * fertig zu initialiseren
      */
 
-    open fun initBody() {
+    open suspend fun initBody() {
         body = world.createBody(bd)
         body.createFixture(fixture)
         createView()
@@ -53,7 +53,7 @@ abstract class Ebody(
      * Überschreiben!
      * Erzeugt den konkreten View und legt ihn in der Property view an
      */
-    abstract fun createView()
+    abstract suspend fun createView()
 
     open fun createFixture() {
         fixture.density = density

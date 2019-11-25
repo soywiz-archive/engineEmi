@@ -72,7 +72,7 @@ object Engine {
     }
 
 
-    fun WorldView.registerBodyWithWorld(body: Ebody) {
+    suspend fun WorldView.registerBodyWithWorld(body: Ebody) {
         body.initForWorld(this.world)
 
     }

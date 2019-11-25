@@ -29,9 +29,9 @@ class Line(x: Number = 0,
         setup()
     }
 
-    override fun createView() {
+    override suspend fun createView() {
         //view = SolidRect(toX.toInt()-x.toInt(), 1, fillColor).apply { anchor(.5,.5) }
-        view = Graphics().apply { fillStroke(Context2d.Color(fillColor), Context2d.Color(fillColor), Context2d.StrokeInfo(thickness = thickness.toDouble())) { moveTo(x, y); lineTo(x.toDouble() + toX.toDouble(), y.toDouble() + toY.toDouble()) } }.scale(1f, 1f / 100f)
+        view = Graphics().apply { fillStroke(Context2d.Color(fillColor), Context2d.Color(fillColor), Context2d.StrokeInfo(thickness = thickness.toDouble())) { moveTo(x, y); lineTo(x + toX.toDouble(), y + toY.toDouble()) } }.scale(1f, 1f / 100f)
         view.apply {
             onOver {
                 writeInfo()
