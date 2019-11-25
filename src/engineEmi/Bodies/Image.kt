@@ -53,7 +53,7 @@ class Image(x: Number = 0,
     override suspend fun createView() {
         view = Graphics().image(image) {
             position(x, y)
-        }.scale(scale)
+        }.scale(scale).anchor(.5, .5)
         view.apply {
             onOver {
                 //writeInfo()
