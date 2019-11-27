@@ -1,4 +1,6 @@
 import com.soywiz.korim.color.*
+import com.soywiz.korim.format.*
+import com.soywiz.korio.file.std.*
 import engineEmi.*
 import engineEmi.Bodies.*
 import org.jbox2d.dynamics.*
@@ -31,13 +33,13 @@ suspend fun main() {
     val boden3 = Rectangle(x = 0, y = -20, width = 100, height = 1, density = 1f, angle = 0.5f, fillColor = Colors.LIGHTCORAL, bodyType = BodyType.KINEMATIC)
 
 
-    //val image = resourcesVfs["hut.png"].readBitmapNoNative()
+    val image = resourcesVfs["hut.png"].readBitmap()
 
-    repeat(500) {
+    repeat(200) {
         Engine.registerBody(Rectangle((-50..50).random(), (30..50).random(), restitution = 0.8f, width = 2, height = 2, density = ((0..100).random().toFloat() / (1..10).random().toFloat()), fillColor = Colors.GREEN, bodyType = BodyType.DYNAMIC))
         Engine.registerBody(Circle((-50..50).random(), (30..50).random(), 1, bodyType = BodyType.DYNAMIC, fillColor = Colors.PINK, density = 0.5f))
-        //  Engine.registerBody(Line((-50..50).random(), (-50..50).random(), (-50..50).random(), (-50..50).random(), BodyType.STATIC, Colors.LIGHTCORAL, 2))
-        //Engine.registerBody(Image(x = (-50..50).random(), y = (30..50).random(), bodyType = BodyType.DYNAMIC, density = 0.5f, friction = 0.3f, imageFile = "hut.png"))
+        //   Engine.registerBody(Line((-50..50).random(), (-50..50).random(), (-50..50).random(), (-50..50).random(), BodyType.STATIC, Colors.LIGHTCORAL, 2))
+        Engine.registerBody(Image(x = (-50..50).random(), y = (30..50).random(), bodyType = BodyType.DYNAMIC, density = 0.5f, friction = 0.3f, preInitializedBitmap = image))
     }
 
 

@@ -10,7 +10,6 @@ import com.soywiz.korio.async.*
 import engineEmi.Bodies.*
 import engineEmi.CanvasElements.*
 
-
 object Engine {
 
     var canvasElements = mutableListOf<CanvasElement>()
@@ -21,21 +20,18 @@ object Engine {
         private set
     var showCoords = false
 
-
     suspend fun run(showCoords: Boolean = false) {
         this.showCoords = showCoords
         main()
     }
 
-    suspend fun main() = Korge(quality = GameWindow.Quality.PERFORMANCE, title = "Engine Emi") {
 
+    suspend fun main() = Korge(quality = GameWindow.Quality.PERFORMANCE, title = "Engine Emi") {
         viewWidth = this.width
         viewHeight = this.height
 
         views.clearColor = Colors.DIMGRAY
         // Physik
-        sgraphics()
-
         worldView {
             position(400, 400).scale(10)
                 // X: -20 bis +50
@@ -49,7 +45,6 @@ object Engine {
                 coordSystem.onEach { it.body }
 
             }
-
             if (!bodies.isEmpty()) {
                 bodies.onEach { registerBodyWithWorld(it) }
                 bodies.onEach { it.body }
