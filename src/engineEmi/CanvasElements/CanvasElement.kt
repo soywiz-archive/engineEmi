@@ -28,7 +28,7 @@ abstract class CanvasElement(
      * Muss in Subklassen überschrieben werden, falls man das Objekt animieren will.
      * Wird im default ca. 60 Mal pro Sekunde aufgerufen.
      * Änderungen der Parameter wie etwa x und y werden so direkt angezeigt, wenn man sie überschreibt.
-     * Alternativ kann man auch bestehenden Objekten neue Animationen zuweisen. Die geht etwa mit Hilfe von [animate(animationsRoutine)]
+     * Alternativ kann man auch bestehenden Objekten neue Animationen zuweisen. Die geht etwa mit Hilfe von [animate]
      */
     open suspend fun animate() {
         animationRoutine()

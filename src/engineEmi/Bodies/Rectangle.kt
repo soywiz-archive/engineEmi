@@ -8,7 +8,7 @@ import org.jbox2d.dynamics.*
 
 
 /**
- * Erzeugt einen [EBody] mit einer rechteckigen Form.
+ * Erzeugt einen [Ebody] mit einer rechteckigen Form.
  * @property width Breite
  * @property height Höhe
  * @property fillColor Füllfarbe. Ist ein Colors Objekt

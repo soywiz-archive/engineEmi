@@ -32,20 +32,25 @@ korge {
 
 
 
+
 tasks {
     val dokka by getting(org.jetbrains.dokka.gradle.DokkaTask::class) {
         outputFormat = "html"
         outputDirectory = "github/workspace/dokka"
-        group = "githubactions"
+        group = "engineemi"
+
     }
+
 }
+
+
 
 
 
 tasks.register<Copy>("copyHtmlToBuildfolder"){
     group = "engineemi"
     from("src/html/")
-    into("${buildDir}/web/")
+    into("/")
 
     mustRunAfter("jsWeb")
 }
