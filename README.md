@@ -1,6 +1,9 @@
 ![](https://github.com/emign/engineEmi/workflows/DocumentationBuild/badge.svg)
 ![](https://github.com/emign/engineEmi/workflows/jsWebBuild/badge.svg)
 ![](https://github.com/emign/engineEmi/workflows/jvmBuild/badge.svg)
+![](https://img.shields.io/github/v/release/emign/engineEmi?labelColor=262B30)
+
+
 # Changelog
 
 ## 0.12 alpha 2019-11-29
