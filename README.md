@@ -8,7 +8,7 @@
 - Property skalierung bei Bild hinzuge`fügt. Nun kann ein Bild einfach auf die korrekte Größe skaliert werden (0.5 -> 50%, ...)
 - `Image` Klasse bei den Bodies. Zeigt Bilder anstatt Geometrische Formen an.
 - Doku überarbeitet
-- `animate(animationsRoutine) Funktion hinzugefügt, um Objekte auch ohne Erzeugung von Subklassen zu animieren.
+- `animate(animationRoutine) Funktion hinzugefügt, um Objekte auch ohne Erzeugung von Subklassen zu animieren.
 
 ### Fixed
 - Skalierung der `CanvasElements`und `Bodies`nun automatisch. Keine ausgefragsten Ecken mehr bei Geraden
