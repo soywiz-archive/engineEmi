@@ -1,4 +1,4 @@
-name: Create Dokka Documentation after release
+name: Docs Build
 
 on: push
 

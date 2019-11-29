@@ -1,3 +1,4 @@
+![](https://github.com/<OWNER>/<REPOSITORY>/workflows/<WORKFLOW_NAME>/badge.svg)
 # Changelog
 
 ## 0.12 alpha 2019-11-29
