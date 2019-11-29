@@ -14,6 +14,7 @@ jobs:
       with:
         arguments: dokka
     - run: |
+        cd /github/workspace
         ls -a
     - name: Upload ftp
       uses: sebastianpopp/ftp-action@releases/v1
