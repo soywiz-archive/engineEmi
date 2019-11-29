@@ -16,10 +16,10 @@ jobs:
 
     - name: FTP-Deploy-Action
       uses: SamKirkland/FTP-Deploy-Action@2.0.0
-        env:
-          FTP_SERVER: ${{ FTP_SERVER }}
-          FTP_USERNAME: ${{ FTP_USERNAME }}
-          FTP_PASSWORD: ${{ secrets.FTP_PASSWORD }}
-          LOCAL_DIR : dokka
-          ARGS: --delete --transfer-all
+      with:
+        FTP_SERVER: ${{ FTP_SERVER }}
+        FTP_USERNAME: ${{ FTP_USERNAME }}
+        FTP_PASSWORD: ${{ secrets.FTP_PASSWORD }}
+        LOCAL_DIR : dokka
+        ARGS: --delete --transfer-all
           # --delete arg will delete files on the server if you've deleted them in git
