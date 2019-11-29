@@ -1,6 +1,6 @@
 name: Create Dokka Documentation after release
 
-on: release
+on: push
 
 jobs:
   gradle:
