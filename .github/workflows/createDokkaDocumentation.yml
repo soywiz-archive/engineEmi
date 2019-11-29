@@ -14,8 +14,14 @@ jobs:
       with:
         arguments: dokka
     - run: |
-        cd ${GITHUB_WORKSPACE}
+        cd "${GITHUB_WORKSPACE}"
         ls -a
     - name: Upload ftp
-      run : |
-        lftp ${{ secrets.FTP_SERVER }} -u ${{ secrets.FTP_USERNAME }},${{ secrets.FTP_PASSWORD }} -e "set ssl:verify-certificate false; put /dokka /; quit"
+      uses: sebastianpopp/ftp-action@releases/v1
+      with:
+        host: ${{ secrets.FTP_SERVER }}
+        user: ${{ secrets.FTP_USERNAME }}
+        password: ${{ secrets.FTP_PASSWORD }}
+        localDir: "dokka"
+        remoteDir: ""      
+    
