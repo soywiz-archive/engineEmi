@@ -13,11 +13,12 @@ jobs:
     - uses: eskatos/gradle-command-action@v1
       with:
         arguments: dokka
-    - name: Upload ftp
-      uses: emign/ftp-action@master
+    - name: copy file via ssh password
+       uses: appleboy/scp-action@master
       with:
-        host: ${{ secrets.FTP_SERVER }}
-        user: ${{ secrets.FTP_USERNAME }}
-        password: ${{ secrets.FTP_PASSWORD }}
-        localDir: "dokka"
-        remoteDir: ""
+        host: emig.me
+        username: ${{ secrets.SSH_USER }}
+        password: ${{ secrets.SSH_PASSWORD }}
+        port: 22
+        source: "/var/www/vhosts/emig.me/httpdocs/doc"
+        target: "dokka"
