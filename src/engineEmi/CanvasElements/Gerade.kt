@@ -1,33 +1,49 @@
+
 package engineEmi.CanvasElements
 
-import engineEmi.CanvasElement
-import org.w3c.dom.CanvasRenderingContext2D
-import kotlin.math.abs
+import com.soywiz.korim.color.*
+import com.soywiz.korim.vector.*
 
-open class Gerade(var toX: Double = 0.0,
-             var toY: Double = 0.0,
-             posX: Double = 0.0,
-             posY: Double = 0.0,
-             fillStyle: String = "",
-             strokeStyle: String = "",
-             shadowColor: String = "",
-             shadowBlur: String = "",
-             shadowOffsetX: Double = 0.0,
-             shadowOffsetY: Double = 0.0,
-             context: CanvasRenderingContext2D? = null) : CanvasElement(posX = posX, posY = posY, fillStyle = fillStyle, strokeStyle = strokeStyle, shadowColor = shadowColor, shadowBlur = shadowBlur, shadowOffsetX = shadowOffsetX, shadowOffsetY = shadowOffsetY, context = context){
+/**
+ * @property x X-Koordinate des Ursprungs der Geraden (Standard-Koordinatensystem)
+ * @property y Y-Koordinate des Ursprungs der Geraden (Standard-Koordinatensystem)
+ * @property toX X-Koordinate des Ziels der Geraden (Standard-Koordinatensystem))
+ * @property toY Y-Koordinate des Ziels der Geraden (Standard-Koordinatensystem)
+ * @property dicke Dicke der Geraden
+ * @property fuellFarbe Füllfarbe als Colors Objekt
+ * @property randFarbe Randfarbe als Colors Objekt
+ * @constructor
+ */
+open class Gerade(var toX: Number = 0.0,
+                  var toY: Number = 0.0,
+                  x: Number = 0.0,
+                  y: Number = 0.0,
+                  var dicke: Number = 10,
+                  fuellFarbe: RGBA = Colors.GREEN,
+                  randFarbe: RGBA = Colors.GREEN) : CanvasElement(x = x, y = y) {
 
-    override val height : Double
-        get() {
-            return abs(posY - toY)
+    var fillColor: RGBA = fuellFarbe
+        set(value) {
+            field = value; updateGraphics()
         }
 
-    override val width : Double
-        get() {
-            return abs(posX - toX)
+    var strokeColor: RGBA = randFarbe
+        set(value) {
+            field = value; updateGraphics()
         }
 
-    override fun callConcreteDrawMethod() {
-        context?.moveTo(posX, posY)
-        context?.lineTo(toX, toY)
+    init {
+        updateGraphics()
+    }
+
+    final override fun updateGraphics() {
+        graphics.apply {
+            clear()
+            fillStroke(Context2d.Color(fillColor), Context2d.Color(fillColor), Context2d.StrokeInfo(thickness = dicke.toDouble())) { moveTo(x, y); lineTo(x + toX.toDouble(), y + toY.toDouble()) }
+        }
     }
 }
+
+
+
+

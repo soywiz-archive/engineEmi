@@ -1,29 +1,52 @@
-package engineEmi
+package engineEmi.CanvasElements
 
-import org.w3c.dom.CanvasRenderingContext2D
+import com.soywiz.korge.view.*
+import com.soywiz.korim.color.*
+import com.soywiz.korma.geom.vector.*
 
-open class Rechteck(override var height: Double = 0.0,
-                    override var width: Double = 0.0,
-                    posX: Double = 0.0,
-                    posY: Double = 0.0,
-                    fillStyle: String = "",
-                    strokeStyle: String = "",
-                    shadowColor: String = "",
-                    shadowBlur: String = "",
-                    shadowOffsetX: Double = 0.0,
-                    shadowOffsetY: Double = 0.0,
-                    context: CanvasRenderingContext2D? = null)
-    : CanvasElement(posX = posX,
-        posY = posY,
-        fillStyle = fillStyle,
-        strokeStyle = strokeStyle,
-        shadowColor = shadowColor,
-        shadowOffsetX = shadowOffsetX,
-        shadowOffsetY = shadowOffsetY,
-        shadowBlur = shadowBlur,
-        context = context) {
+/**
+ * Zeichnet ein Rechteck
+ * @property x X-Koordinate der linken oberen Ecke des Rechtecks
+ * @property y Y-Koordinate der linken oberen Ecke des Rechtecks
+ * @property höhe Höhe des Rechtecks
+ * @property breite Breite des Rechtecks
+ * @property fuellFarbe Füllfarbe. Colors-Objekt
+ * @property randFarbe Randfarbe. Colors-Objekt
+ * @constructor
+ */
+open class Rechteck(höhe: Number = 0.0,
+                    breite: Number = 0.0,
+                    x: Number = 0.0,
+                    y: Number = 0.0,
+                    fuellFarbe: RGBA = Colors.GREEN,
+                    randFarbe: RGBA = Colors.RED
+) : CanvasElement(x = x, y = y) {
 
-    override fun callConcreteDrawMethod() {
-        this.context?.rect(posX, this.posY, this.width, this.height)
+
+    var fillColor: RGBA = fuellFarbe
+        set(value) {
+            field = value; updateGraphics()
+        }
+
+    var strokeColor: RGBA = randFarbe
+        set(value) {
+            field = value; updateGraphics()
+        }
+
+    init {
+        updateGraphics()
+        super.width = breite.toDouble()
+        super.height = höhe.toDouble()
+    }
+
+    final override fun updateGraphics() {
+        graphics {
+            clear()
+            fill(fillColor) {
+                rect(-x, -y, width, height)
+            }
+            position(x, y)
+        }
     }
 }
+

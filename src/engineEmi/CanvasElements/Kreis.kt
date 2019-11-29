@@ -1,39 +1,59 @@
-package engineEmi
+package engineEmi.CanvasElements
 
-import org.w3c.dom.CanvasRenderingContext2D
+import com.soywiz.korim.color.*
+import com.soywiz.korma.geom.vector.*
 
-open class Kreis(var radius : Double = 0.0,
-            posX : Double = 0.0,
-            posY : Double = 0.0,
-            fillStyle : String = "",
-            strokeStyle : String = "",
-            shadowColor : String = "",
-            shadowBlur : String ="",
-            shadowOffsetX : Double = 0.0,
-            shadowOffsetY : Double= 0.0,
-            context : CanvasRenderingContext2D? = null)
-    : CanvasElement(posX = posX,
-        posY = posY,
-        fillStyle = fillStyle,
-        strokeStyle = strokeStyle,
-        shadowColor = shadowColor,
-        shadowBlur = shadowBlur,
-        shadowOffsetX = shadowOffsetX,
-        shadowOffsetY = shadowOffsetY,
-        context = context ){
+/**
+ * Zeichnet einen Kreis
+ * @property radius Radius
+ * @property x X-Koordiante des Mittelpunkts (Standard-Koordinatensystem)
+ * @property y Y-Koordiante des Mittelpunkts (Standard-Koordinatensystem)
+ * @property fuellFarbe Füllfarbe als Colors Objekt
+ * @property randFarbe Randfarbe als Colors Objekt
+ * @constructor
+ */
+open class Kreis(radius: Number = 10.0,
+                 x: Number = 100.0,
+                 y: Number = 100.0,
+                 fuellFarbe: RGBA = Colors.GREEN,
+                 randFarbe: RGBA = Colors.RED
+) : CanvasElement(x = x, y = y) {
 
 
-    override val height : Double
-        get() {
-            return radius
+    var radius: Number = radius
+        set(value) {
+            field = value; updateGraphics()
         }
 
-    override val width : Double
-        get() {
-            return radius
+    var fuellFarbe: RGBA = fuellFarbe
+        set(value) {
+            field = value; updateGraphics()
         }
 
-    override fun callConcreteDrawMethod(){
-        context?.arc(posX, this.posY, this.radius,0.0,2 * kotlin.math.PI)
+    var randFarbe: RGBA = randFarbe
+        set(value) {
+            field = value; updateGraphics()
+        }
+
+    init {
+        updateGraphics()
+    }
+
+
+    final override fun updateGraphics() {
+        graphics.apply {
+            clear()
+            fill(fuellFarbe) {
+                circle(x, y, radius)
+            }
+        }
+    }
+}
+
+class AnimierterKreis : Kreis() {
+    override suspend fun animate() {
+        super.animate()
+        x++
+        y++
     }
 }

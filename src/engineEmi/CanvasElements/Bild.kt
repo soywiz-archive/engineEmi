@@ -1,28 +1,35 @@
 package engineEmi.CanvasElements
 
-import engineEmi.CanvasElement
-import org.w3c.dom.CanvasRenderingContext2D
-import org.w3c.dom.Image
+import com.soywiz.korge.view.*
+import com.soywiz.korim.format.*
+import com.soywiz.korio.file.std.*
 
-open class Bild(var src: String = "",
-           posX: Double = 0.0,
-           posY: Double = 0.0,
-           context: CanvasRenderingContext2D? = null
-) : CanvasElement(posX = posX, posY = posY, context = context) {
+/**
+ * Lässt ein Bild anzeigen.
+ * @property bildDatei Dateiname des Bildes (ggf. mit Pfadangabe). Wurzel ist das "resoures" Verzeichnis
+ * @property skalierung Skaliert das Bild um den angegebenen Faktor
+ * @constructor
+ */
+open class Bild(x: Number = 100.0,
+                y: Number = 100.0,
+                var bildDatei: String,
+                var skalierung: Float = 1.0f
+) : CanvasElement(x = x, y = y) {
 
-    override val height : Double
-        get() {
-            return 100.0
-        }
 
-    override val width : Double
-        get() {
-            return 100.0
-        }
+    init {
+        updateGraphics()
+    }
 
-    override fun callConcreteDrawMethod() {
-        var image = Image()
-        image.src = src
-        context?.drawImage(image, posX, posY)
+    final override fun updateGraphics() {
+    }
+
+
+    override suspend fun prepareElement() {
+        super.prepareElement()
+        image(resourcesVfs[bildDatei].readBitmap()) {
+            position(x, y)
+        }.scale(skalierung)
+
     }
 }
