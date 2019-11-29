@@ -25,12 +25,12 @@ open class Kreis(radius: Number = 10.0,
             field = value; updateGraphics()
         }
 
-    var fillColor: RGBA = fuellFarbe
+    var fuellFarbe: RGBA = fuellFarbe
         set(value) {
             field = value; updateGraphics()
         }
 
-    var strokeColor: RGBA = randFarbe
+    var randFarbe: RGBA = randFarbe
         set(value) {
             field = value; updateGraphics()
         }
@@ -43,9 +43,17 @@ open class Kreis(radius: Number = 10.0,
     final override fun updateGraphics() {
         graphics.apply {
             clear()
-            fill(fillColor) {
+            fill(fuellFarbe) {
                 circle(x, y, radius)
             }
         }
+    }
+}
+
+class AnimierterKreis : Kreis() {
+    override suspend fun animate() {
+        super.animate()
+        x++
+        y++
     }
 }

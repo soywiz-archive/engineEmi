@@ -15,13 +15,13 @@ import engineEmi.Engine.canvasElements
 /**
  * Die Game-Engine. Sie ist ein Singleton und wird mit [Engine.run] gestartet
  * @property canvasElements Alle registrieten Objekte vom Typ [CanvasElement]
- * @property bodies Alle registrieten Objekte vom Typ [EBody]
+ * @property bodies Alle registrieten Objekte vom Typ [Ebody]
  *
  */
 object Engine {
     var canvasElements = mutableListOf<CanvasElement>()
     var bodies = mutableListOf<Ebody>()
-    var view = View()
+    var view = MyView()
     var viewHeight = 0.0
         private set
     var viewWidth = 0.0
@@ -48,16 +48,6 @@ object Engine {
             // X: -20 bis +50
             // Y: -20 bis +20
 
-            if (showCoords) {
-                Log.log("Zeige Koordinatensystem")
-                val coordSystem = listOf(Line(-50, 0, 150, 0, fillColor = Colors.YELLOW, thickness = 10))
-                this.world.isLocked
-                coordSystem.run {
-                    onEach { registerBodyWithWorld(it) }
-                    onEach { it.body }
-                }
-
-            }
             if (!bodies.isEmpty()) {
                 bodies.run {
                     onEach { registerBodyWithWorld(it) }
@@ -100,7 +90,7 @@ object Engine {
     }
 
     /**
-     * Registriert einen [EBody] bei der Engine (Physikobjekte)
+     * Registriert einen [Ebody] bei der Engine (Physikobjekte)
      * @param body Ebody
      */
     fun registerBody(body: Ebody) {
@@ -108,7 +98,7 @@ object Engine {
     }
 
     /**
-     * Registriert einen [EBody] oder ein [CanvasElement] bei der Engine
+     * Registriert einen [Ebody] oder ein [CanvasElement] bei der Engine
      * @param o Any
      */
     fun register(o: Any) {
@@ -121,7 +111,7 @@ object Engine {
     }
 }
 
-class View {
+class MyView {
     var height = 0.0
     var width = 0.0
 }
