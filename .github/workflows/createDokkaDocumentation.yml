@@ -16,11 +16,6 @@ jobs:
     - uses: eskatos/gradle-command-action@v1
       with:
         arguments: dokka
-      
-  deploy:
-    name: Deploy
-    runs-on: ubuntu-latest
-    steps:
     - uses: actions/checkout@master
     - name: Upload ftp
       uses: sebastianpopp/ftp-action@releases/v1
@@ -28,5 +23,6 @@ jobs:
         host: ${{ secrets.FTP_SERVER }}
         user: ${{ secrets.FTP_USERNAME }}
         password: ${{ secrets.FTP_PASSWORD }}
-        localDir: "/home/runner/work/engineEmi/engineEmi/build/dokka"
-        remoteDir: ""
+        localDir: "/build/dokka"
+        remoteDir: ""      
+    
