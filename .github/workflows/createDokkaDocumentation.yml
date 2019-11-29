@@ -20,5 +20,5 @@ jobs:
         username: ${{ secrets.SSH_USER }}
         password: ${{ secrets.SSH_PASSWORD }}
         port: 22
-        source: "/var/www/vhosts/emig.me/httpdocs/doc"
-        target: "dokka"
+        source: "dokka"
+        target: "/var/www/vhosts/emig.me/httpdocs/doc"
