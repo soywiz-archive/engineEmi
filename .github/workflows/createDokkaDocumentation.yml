@@ -13,9 +13,6 @@ jobs:
     - uses: eskatos/gradle-command-action@v1
       with:
         arguments: dokka
-    - run: |
-        cd "${GITHUB_WORKSPACE}"
-        ls -a
     - name: Upload ftp
       uses: emign/ftp-action@master
       with:
@@ -24,3 +21,4 @@ jobs:
         password: ${{ secrets.FTP_PASSWORD }}
         localDir: "dokka"
         remoteDir: ""
+
