@@ -8,8 +8,8 @@ import com.soywiz.korma.geom.vector.*
  * @property radius Radius
  * @property x X-Koordiante des Mittelpunkts (Standard-Koordinatensystem)
  * @property y Y-Koordiante des Mittelpunkts (Standard-Koordinatensystem)
- * @property fuellFarbe Füllfarbe als Colors Objekt
- * @property randFarbe Randfarbe als Colors Objekt
+ * @property fuellFarbe Füllfarbe als Colors-Objekt
+ * @property randFarbe Randfarbe als Colors-Objekt
  * @constructor
  */
 open class Kreis(radius: Number = 10.0,
