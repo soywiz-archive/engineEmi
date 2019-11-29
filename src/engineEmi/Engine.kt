@@ -13,7 +13,7 @@ import engineEmi.Engine.bodies
 import engineEmi.Engine.canvasElements
 
 /**
- * Die Game-Engine. Sie ist ein Singleton und wird mit [Engine.run] gestartet
+ * Die Game-Engine. Sie ist ein Singleton und wird mit [Engine.run] gestartet.
  * @property canvasElements Alle registrieten Objekte vom Typ [CanvasElement]
  * @property bodies Alle registrieten Objekte vom Typ [Ebody]
  *
