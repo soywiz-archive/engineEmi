@@ -86,10 +86,6 @@ tasks.register<DefaultTask>("openLocal"){
 
 
 
-
-
-
-
 //kotlin.sourceSets["commonMain"].resources.srcDir("src")
 kotlin.sourceSets["commonMain"].kotlin.srcDir("src")
 kotlin.sourceSets["commonMain"].resources.srcDir("resources")
