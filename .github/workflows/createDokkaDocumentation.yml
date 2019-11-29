@@ -13,6 +13,8 @@ jobs:
     - uses: eskatos/gradle-command-action@v1
       with:
         arguments: dokka
+    - run: |
+        ls -a
     - name: Upload ftp
       uses: sebastianpopp/ftp-action@releases/v1
       with:
