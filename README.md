@@ -1,5 +1,18 @@
 # Changelog
 
+## 0.12 alpha 2019-11-29
+
+### Added
+- Kotlin 1.3.60 support
+- Korge 1.40 support
+- Property skalierung bei Bild hinzugefügt. Nun kann ein Bild einfach auf die korrekte Größe skaliert werden (0.5 -> 50%, ...)
+- `Image` Klasse bei den Bodies. Zeigt Bilder anstatt Geometrische Formen an.
+- Doku überarbeitet
+- animate(animationsRoutine) Funktion hinzugefügt, um Objekte auch ohne Erzeugung von Subklassen zu animieren.
+
+### Fixed
+- Skalierung der `CanvasElements`und `Bodies`nun automatisch. Keine ausgefragsten Ecken mehr bei Geraden
+
 ## 0.11 alpha 2019-11-25 
 ### Added
 - Property skalierung bei Bild hinzugefügt. Nun kann ein Bild einfach auf die korrekte Größe skaliert werden (0.5 -> 50%, ...)
@@ -13,3 +26,4 @@ Testbranch umbenannt in dev. Die Implementierung von box2d und der korge engine 
 ### Added
 - Alle CanvasElements besitzen nun deutsche Namen und Propertiebezeichnungen, was die Abgrenzung zu den Bodies erleichtert
 - Alle CanvasElements und Bodies können nun mit Zahlenwerten vom Typ `Number` initialisiert werden (kein Double, Int, Float mehr notwendig.) 
+
