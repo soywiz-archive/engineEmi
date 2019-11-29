@@ -2,67 +2,54 @@ package engineEmi.CanvasElements
 
 
 import com.soywiz.korge.view.*
-import engineEmi.*
+
 
 abstract class CanvasElement(
         x: Number,
-        y: Number
-                             ) : Container(){
+        y: Number) : Container() {
 
     init {
         super.x = x.toDouble()
         super.y = y.toDouble()
     }
 
-
+    /**
+     * Autoskalierender Vektor->Bitmap Wandler
+     */
     val graphics = sgraphics {
     }
 
-    var posX = x
-    set(value){
-        Log.log("DEPRECATED/ÜBERHOLT: " + ::fillStyle.name + ". Verwenden Sie stattdessen x")
-        x = posX.toDouble()
-        field = value
-    }
-    var posY = y
-        set(value){
-            Log.log("DEPRECATED/ÜBERHOLT: " + ::fillStyle.name + ". Verwenden Sie stattdessen y")
-            y = posY.toDouble()
-            field = value
-        }
+    /**
+     * Hier werden die Animationsbefehle gespeichert.
+     */
+    var animationRoutine: () -> Any = {}
 
-    var fillStyle = ""
-    get() {
-        Log.log("DEPRECATED/ÜBERHOLT: " + ::fillStyle.name + ". Verwenden Sie stattdessen fillColor")
-        return field
+    /**
+     * Muss in Subklassen überschrieben werden, falls man das Objekt animieren will.
+     * Wird im default ca. 60 Mal pro Sekunde aufgerufen.
+     * Änderungen der Parameter wie etwa x und y werden so direkt angezeigt, wenn man sie überschreibt.
+     * Alternativ kann man auch bestehenden Objekten neue Animationen zuweisen. Die geht etwa mit Hilfe von [animate(animationsRoutine)]
+     */
+    open suspend fun animate() {
+        animationRoutine()
     }
-    set(value) {
-        field = value
-        Log.log("DEPRECATED/ÜBERHOLT: " + ::fillStyle.name + ". Verwenden Sie stattdessen fillColor")
+
+    /**
+     * Bekommt eine animationsRoutine als Lamba, dass Objekte auch nachträglich mit Animationen bestückt werden können
+     * @param animationRoutine Enthält die Anweisungen, welche die Parameter (etwa x und y Koordinaten für eine Bewegung) verändern.
+     */
+    open suspend fun animate(animationRoutine: () -> Any) {
+        this.animationRoutine = animationRoutine
     }
-    var strokeStyle = ""
-        get() {
-            Log.log("DEPRECATED/ÜBERHOLT: " + ::strokeStyle.name + ". Verwenden Sie stattdessen strokeColor")
-            return field
-        }
-        set(value) {
-            field = value
-            Log.log("DEPRECATED/ÜBERHOLT: " + ::strokeStyle.name + ". Verwenden Sie stattdessen strokeColor")
-        }
 
-    open suspend fun animate() {}
-
+    /**
+     * Bereite das Element vor (wird in Subklassen überschrieben).
+     * Siehe Implementierung von [Kreis] oder [Rechteck] für Beispiele
+     */
     open suspend fun prepareElement() {}
 
-    val centerX: Double
-        get() {
-            return width / 2 + posX.toDouble()
-        }
-
-    val centerY: Double
-        get() {
-            return height / 2 + posY.toDouble()
-        }
-
+    /**
+     * Zeichnet das Objekt. Siehe Implementierung von [Kreis] oder [Rechteck] für Beispiele
+     */
     abstract fun updateGraphics()
 }

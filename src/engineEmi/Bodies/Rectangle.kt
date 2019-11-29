@@ -6,6 +6,17 @@ import com.soywiz.korge.view.*
 import com.soywiz.korim.color.*
 import org.jbox2d.dynamics.*
 
+
+/**
+ * Erzeugt einen [EBody] mit einer rechteckigen Form.
+ * @property width Breite
+ * @property height Höhe
+ * @property fillColor Füllfarbe. Ist ein Colors Objekt
+ * @property angle Drehwinkel in Radiant
+ * @property strokeColor Randfarbe Ist ein Colors Objekt
+ * @property strokeThickness Randbreite
+ * @constructor
+ */
 class Rectangle(x: Number = 0,
                 y: Number = 0,
                 var width: Number = 0,
@@ -22,7 +33,6 @@ class Rectangle(x: Number = 0,
 ) {
 
     override val shape = BoxShape(width = width, height = height)
-
 
     init {
         setup()

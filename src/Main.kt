@@ -3,22 +3,34 @@ import com.soywiz.korim.format.*
 import com.soywiz.korio.file.std.*
 import engineEmi.*
 import engineEmi.Bodies.*
+import engineEmi.CanvasElements.*
 import org.jbox2d.dynamics.*
 
 
+/**
+ * Startpunkt für alle Programme.
+ * Hier werden [Ebody] und [CanvasElement] Objekte bei der [Engine] registriert.
+ * Hierzu kann man die Methoden [Engine.registerCanvasElement], [Engine.registerBody] und [Engine.register] verwenden.
+ * Als Letzter Befehl muss immer die [Engine.run] Funktion aufgerufen werden.
+ */
 suspend fun main() {
 
-   // val circle = Circle(radius = 32.0)
-    // val meinKreis = Kreis(x = 100.0, y = 100.0, radius = 20.0, fuellFarbe = Colors.LIGHTCORAL)
+    // val circle = Circle(radius = 32.0)
+    val meinKreis = Kreis(x = 100.0, y = 100.0, radius = 20.0, fuellFarbe = Colors.LIGHTCORAL)
+    val aktion = { meinKreis.x++ }
+    meinKreis.animate(aktion)
+
+
     // val meinRechteck = Rechteck(100.0, 100.0, x = 100.0, y = 100.0, fuellFarbe = Colors.GREEN)
     // val meineGerade = Gerade(100.0, 200.0, 10.0, 10.0, 0.5, Colors.BEIGE)
     // val meinBild = Bild(100.0, 200.0, "korge.png")
-    //Engine.registerCanvasElement(meinKreis)
+
+    Engine.registerCanvasElement(meinKreis)
     //Engine.registerCanvasElement(meineGerade)
     //Engine.registerCanvasElement(meinRechteck)
     //Engine.registerCanvasElement(meinBild)
 
-   // Engine.registerCanvasElement(circle)
+    // Engine.registerCanvasElement(circle)
 
     //val k2 = Circle(0.0, 30.0, radius = 20F, density = 0.2F, fillColor = Colors.GREEN, bodyType = BodyType.DYNAMIC)
 
@@ -35,7 +47,7 @@ suspend fun main() {
 
     val image = resourcesVfs["hut.png"].readBitmap()
 
-    repeat(200) {
+    repeat(0) {
         Engine.registerBody(Rectangle((-50..50).random(), (30..50).random(), restitution = 0.8f, width = 2, height = 2, density = ((0..100).random().toFloat() / (1..10).random().toFloat()), fillColor = Colors.GREEN, bodyType = BodyType.DYNAMIC))
         Engine.registerBody(Circle((-50..50).random(), (30..50).random(), 1, bodyType = BodyType.DYNAMIC, fillColor = Colors.PINK, density = 0.5f))
         //   Engine.registerBody(Line((-50..50).random(), (-50..50).random(), (-50..50).random(), (-50..50).random(), BodyType.STATIC, Colors.LIGHTCORAL, 2))

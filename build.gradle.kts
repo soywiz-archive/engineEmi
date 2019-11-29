@@ -10,10 +10,12 @@ buildscript {
     }
     dependencies {
         classpath("com.soywiz.korlibs.korge.plugins:korge-gradle-plugin:1.4.0")
+        classpath("org.jetbrains.dokka:dokka-gradle-plugin:0.10.0")
     }
 }
 
 apply(plugin = "korge")
+apply(plugin = "org.jetbrains.dokka")
 
 korge {
     id = "me.emig.engineEmi"
@@ -26,6 +28,16 @@ korge {
     supportTriangulation()
     supportDragonbones()
     supportBox2d()
+}
+
+
+
+tasks {
+    val dokka by getting(org.jetbrains.dokka.gradle.DokkaTask::class) {
+        outputFormat = "html"
+        outputDirectory = "$buildDir/dokka"
+        group = "engineemi"
+    }
 }
 
 

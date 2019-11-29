@@ -7,6 +7,14 @@ import com.soywiz.korma.geom.vector.*
 import org.jbox2d.collision.shapes.*
 import org.jbox2d.dynamics.*
 
+/**
+ *
+ * @property radius Radius
+ * @property fillColor Füllfarbe. Colors-Objekt
+ * @property strokeColor Randfarbe. Colors-Objekt
+ * @property strokeThickness Randdicke
+ * @constructor
+ */
 class Circle(x: Number = 0,
              y: Number = 0,
              var radius: Number = 0,
