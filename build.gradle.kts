@@ -37,56 +37,23 @@ tasks {
     val dokka by getting(org.jetbrains.dokka.gradle.DokkaTask::class) {
         outputFormat = "html"
         outputDirectory = "dokka"
-        group = "engineemi"
-
     }
-
 }
 
 
-
-
-
-tasks.register<Copy>("copyHtmlToBuildfolder"){
-    group = "engineemi"
-    from("src/html/")
-    into("/")
-
-    mustRunAfter("jsWeb")
-}
 
 
 tasks.register<DefaultTask>("openInBrowser"){
     group = "engineemi"
-    //   dependsOn("compileKotlinJs")
-    //  dependsOn("genResources")
-    // dependsOn("jsProcessResources")
-    // dependsOn("jsMainClasses")
-    // dependsOn("jsJar")
-    // dependsOn("jsWeb")
-    // dependsOn("copyHtmlToBuildfolder")
-
-
     dependsOn("jsWebRun")
 }
 
 tasks.register<DefaultTask>("openLocal"){
     group = "engineemi"
-    //   dependsOn("compileKotlinJs")
-    //  dependsOn("genResources")
-    // dependsOn("jsProcessResources")
-    // dependsOn("jsMainClasses")
-    // dependsOn("jsJar")
-    // dependsOn("jsWeb")
-    // dependsOn("copyHtmlToBuildfolder")
-
-
     dependsOn("runJvm")
 }
 
 
-
-//kotlin.sourceSets["commonMain"].resources.srcDir("src")
 kotlin.sourceSets["commonMain"].kotlin.srcDir("src")
 kotlin.sourceSets["commonMain"].resources.srcDir("resources")
 

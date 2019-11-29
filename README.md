@@ -1,4 +1,6 @@
 ![](https://github.com/emign/engineEmi/workflows/DocumentationBuild/badge.svg)
+![](https://github.com/emign/engineEmi/workflows/jsWebBuild/badge.svg)
+![](https://github.com/emign/engineEmi/workflows/jvmBuild/badge.svg)
 # Changelog
 
 ## 0.12 alpha 2019-11-29
