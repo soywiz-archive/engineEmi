@@ -37,6 +37,7 @@ object Engine {
         main()
     }
 
+
     suspend fun main() = Korge(quality = GameWindow.Quality.PERFORMANCE, title = "Engine Emi") {
         view.width = this.width
         view.height = this.height
