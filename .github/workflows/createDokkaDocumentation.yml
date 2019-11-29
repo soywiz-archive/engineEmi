@@ -13,6 +13,7 @@ jobs:
     - uses: eskatos/gradle-command-action@v1
       with:
         arguments: dokka
+
     - name: FTP-Deploy-Action
       uses: SamKirkland/FTP-Deploy-Action@2.0.0
         env:
