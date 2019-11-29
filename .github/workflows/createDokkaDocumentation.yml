@@ -17,7 +17,7 @@ jobs:
         cd "${GITHUB_WORKSPACE}"
         ls -a
     - name: Upload ftp
-      uses: sebastianpopp/ftp-action@releases/v1
+      uses: emign/ftp-action@releases/v2
       with:
         host: ${{ secrets.FTP_SERVER }}
         user: ${{ secrets.FTP_USERNAME }}
