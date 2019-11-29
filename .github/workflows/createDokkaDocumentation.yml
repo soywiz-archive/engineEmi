@@ -16,13 +16,12 @@ jobs:
     - uses: eskatos/gradle-command-action@v1
       with:
         arguments: dokka
-    - uses: actions/checkout@master
     - name: Upload ftp
       uses: sebastianpopp/ftp-action@releases/v1
       with:
         host: ${{ secrets.FTP_SERVER }}
         user: ${{ secrets.FTP_USERNAME }}
         password: ${{ secrets.FTP_PASSWORD }}
-        localDir: "workspace/dokka"
+        localDir: "/dokka"
         remoteDir: ""      
     
