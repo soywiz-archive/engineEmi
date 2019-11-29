@@ -15,7 +15,7 @@ jobs:
         arguments: dokka
   FTP-Deploy-Action:
     name: FTP-Deploy-Action
-    runs-on: ubuntu-latest
+    runs-on: [ubuntu-latest]
     - uses: SamKirkland/FTP-Deploy-Action@2.0.0
         env:
           FTP_SERVER: ${{ FTP_SERVER }}
