@@ -15,10 +15,10 @@ jobs:
         arguments: dokka
     - name: copy file via ssh password
     - uses: appleboy/scp-action@master
-        with:
-          host: emig.me
-          username: ${{ secrets.SSH_USER }}
-          password: ${{ secrets.SSH_PASSWORD }}
-          port: 22
-          source: "/var/www/vhosts/emig.me/httpdocs/doc"
-          target: "dokka"
+      with:
+        host: emig.me
+        username: ${{ secrets.SSH_USER }}
+        password: ${{ secrets.SSH_PASSWORD }}
+        port: 22
+        source: "/var/www/vhosts/emig.me/httpdocs/doc"
+        target: "dokka"
