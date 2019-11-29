@@ -14,5 +14,10 @@ jobs:
       with:
         arguments: dokka
     - name: Upload ftp
-      run: |
-        lftp $INPUT_HOST -u $INPUT_USER,$INPUT_PASSWORD -e "set ssl:verify-certificate no, set passive-mode yes, set ssl-allow true'; mirror --reverse --continue --dereference -x ^\.git/$ dokka /; quit"
+      uses: emign/ftp-action@master
+      with:
+        host: ${{ secrets.FTP_SERVER }}
+        user: ${{ secrets.FTP_USERNAME }}
+        password: ${{ secrets.FTP_PASSWORD }}
+        localDir: "dokka"
+        remoteDir: ""
