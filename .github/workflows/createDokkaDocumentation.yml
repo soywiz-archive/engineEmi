@@ -15,7 +15,6 @@ jobs:
         arguments: dokka
   FTP-Deploy-Action:
     name: FTP-Deploy-Action
-    runs-on: [ubuntu-latest]
     - uses: SamKirkland/FTP-Deploy-Action@2.0.0
         env:
           FTP_SERVER: ${{ FTP_SERVER }}
@@ -24,4 +23,3 @@ jobs:
           LOCAL_DIR : dokka
           ARGS: --delete --transfer-all
           # --delete arg will delete files on the server if you've deleted them in git
-    
