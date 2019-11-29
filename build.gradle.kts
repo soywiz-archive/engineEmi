@@ -35,8 +35,8 @@ korge {
 tasks {
     val dokka by getting(org.jetbrains.dokka.gradle.DokkaTask::class) {
         outputFormat = "html"
-        outputDirectory = "$buildDir/dokka"
-        group = "engineemi"
+        outputDirectory = "workspace/dokka"
+        group = "githubactions"
     }
 }
 

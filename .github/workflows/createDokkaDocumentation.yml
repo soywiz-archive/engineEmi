@@ -23,6 +23,6 @@ jobs:
         host: ${{ secrets.FTP_SERVER }}
         user: ${{ secrets.FTP_USERNAME }}
         password: ${{ secrets.FTP_PASSWORD }}
-        localDir: "/home/runner/work/engineEmi/engineEmi/build/dokka"
+        localDir: "workspace/dokka"
         remoteDir: ""      
     
