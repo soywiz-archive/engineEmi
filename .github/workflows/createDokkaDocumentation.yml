@@ -13,13 +13,9 @@ jobs:
     - uses: eskatos/gradle-command-action@v1
       with:
         arguments: dokka
-
-    - name: FTP-Deploy-Action
-      uses: SamKirkland/FTP-Deploy-Action@2.0.0
-      with:
-        FTP_SERVER: ${{ FTP_SERVER }}
-        FTP_USERNAME: ${{ FTP_USERNAME }}
-        FTP_PASSWORD: ${{ secrets.FTP_PASSWORD }}
-        LOCAL_DIR : dokka
-        ARGS: --delete --transfer-all
-          # --delete arg will delete files on the server if you've deleted them in git
+    - run: |
+        cd ${GITHUB_WORKSPACE}
+        ls -a
+    - name: Upload ftp
+      run : |
+        lftp ${{ secrets.FTP_SERVER }} -u ${{ secrets.FTP_USERNAME }},${{ secrets.FTP_PASSWORD }} -e "set ssl:verify-certificate false; put /dokka /; quit"
