@@ -41,7 +41,7 @@ object Engine {
         view.width = this.width
         view.height = this.height
 
-        views.clearColor = Colors.DIMGRAY
+        views.clearColor = Colors.WHITE
         // Physik
         worldView {
             position(400, 400).scale(10)

@@ -16,7 +16,11 @@ import org.jbox2d.dynamics.*
 suspend fun main() {
 
     // val circle = Circle(radius = 32.0)
+
     val meinKreis = Kreis(x = 100.0, y = 100.0, radius = 20.0, fuellFarbe = Colors.LIGHTCORAL)
+    Engine.registerCanvasElement(meinKreis)
+
+
 
     val animationsRoutine = {
         meinKreis.x++
@@ -26,14 +30,13 @@ suspend fun main() {
     meinKreis.animate(animationsRoutine)
 
 
-    // val meinRechteck = Rechteck(100.0, 100.0, x = 100.0, y = 100.0, fuellFarbe = Colors.GREEN)
-    // val meineGerade = Gerade(100.0, 200.0, 10.0, 10.0, 0.5, Colors.BEIGE)
-    // val meinBild = Bild(100.0, 200.0, "korge.png")
+    val meinRechteck = Rechteck(höhe = 100.0, breite = 100.0, x = 100.0, y = 100.0, fuellFarbe = Colors.LAWNGREEN)
+    val meineGerade = Gerade(x = 10.0, y = 10.0, toX = 100.0, toY = 180.0, dicke = 3, fuellFarbe = Colors.BLUEVIOLET)
+    val meinBild = Bild(x = 100.0, y = 150.0, bildDatei = "hut.png", skalierung = 0.5f)
 
-    Engine.registerCanvasElement(meinKreis)
-    //Engine.registerCanvasElement(meineGerade)
-    //Engine.registerCanvasElement(meinRechteck)
-    //Engine.registerCanvasElement(meinBild)
+    Engine.registerCanvasElement(meineGerade)
+    Engine.registerCanvasElement(meinRechteck)
+    Engine.registerCanvasElement(meinBild)
 
     // Engine.registerCanvasElement(circle)
 
@@ -52,7 +55,7 @@ suspend fun main() {
 
     val image = resourcesVfs["hut.png"].readBitmap()
 
-    repeat(100) {
+    repeat(0) {
         Engine.registerBody(Rectangle((-50..50).random(), (30..50).random(), restitution = 0.8f, width = 2, height = 2, density = ((0..100).random().toFloat() / (1..10).random().toFloat()), fillColor = Colors.GREEN, bodyType = BodyType.DYNAMIC))
         Engine.registerBody(Circle((-50..50).random(), (30..50).random(), 1, bodyType = BodyType.DYNAMIC, fillColor = Colors.PINK, density = 0.5f))
         //   Engine.registerBody(Line((-50..50).random(), (-50..50).random(), (-50..50).random(), (-50..50).random(), BodyType.STATIC, Colors.LIGHTCORAL, 2))
@@ -68,11 +71,12 @@ suspend fun main() {
     // Engine.registerBody(line)
     // Engine.registerBody(boden2)
     //Engine.registerBody(boden3)
-    Engine.registerBody(Line(0, 0, 80, 0, fillColor = Colors.AQUA, thickness = 1))
+    //Engine.registerBody(Line(0, 0, 80, 0, fillColor = Colors.AQUA, thickness = 1))
     //Engine.registerBody(test2)
 
 
     Engine.run()
+    //
 
 
 }
