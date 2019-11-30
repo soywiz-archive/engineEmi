@@ -11,6 +11,9 @@
 - Support für github actions
 - github badges für jvm und js build, doc und versionsnummer
 
+### Fixed
+- Breite und Höhe kann nun korrekt angezeigt werden `Engine.view.height`
+
 ## 0.12 alpha 2019-11-29
 ### Added
 - Kotlin 1.3.60 support
