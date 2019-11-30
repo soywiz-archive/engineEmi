@@ -1,1 +1,0 @@
-class Umlaufbahn(var radius: Int = 100, var umlaufGeschwindigkeit: Double = (1..10).random() / 200.0, var winkel: Double = 0.0)
