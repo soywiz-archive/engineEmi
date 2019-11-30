@@ -6,8 +6,12 @@
 
 # Changelog
 
-## 0.12 alpha 2019-11-29
+## 0.13c
+### Added
+- Support für github actions
+- github badges für jvm und js build, doc und versionsnummer
 
+## 0.12 alpha 2019-11-29
 ### Added
 - Kotlin 1.3.60 support
 - Korge 1.40 support
