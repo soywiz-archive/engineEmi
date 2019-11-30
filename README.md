@@ -10,6 +10,7 @@
 ### Added
 - Support für github actions
 - github badges für jvm und js build, doc und versionsnummer
+- fun register(o : Collection<Any>) um Collections im Gesamten anzumelden
 
 ### Fixed
 - Breite und Höhe kann nun korrekt angezeigt werden `Engine.view.height`

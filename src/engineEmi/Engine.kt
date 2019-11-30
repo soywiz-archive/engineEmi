@@ -110,6 +110,14 @@ object Engine {
         else
             Log.log("Objekt ${o} vom Typ ${o::class} kann nicht registriert werden.")
     }
+
+    /**
+     * Registriert alle Elemente einer Collection (Array, Liste, ...) bei der Engine
+     * @param o Collection<Any>
+     */
+    fun register(o : Collection<Any>){
+        o.map { register(it) }
+    }
 }
 
 class ViewWindow {
