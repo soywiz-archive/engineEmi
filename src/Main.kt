@@ -16,9 +16,9 @@ import org.jbox2d.dynamics.*
 suspend fun main() {
 
 
-    var erde = Planet(Umlaufbahn(), Colors.BLUE, 30)
+    val sonne = Stern(radius = 50)
 
-    Engine.register(erde)
+    Engine.register(sonne)
 
     Engine.run()
 

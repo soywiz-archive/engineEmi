@@ -4,10 +4,7 @@ import engineEmi.CanvasElements.*
 
 abstract class Planet (var umlaufbahn: Umlaufbahn,
               var farbe : RGBA,
-              radius : Int) : Kreis(fuellFarbe = farbe, radius = radius){
+              radius : Int) : Kreis(fuellFarbe = farbe, radius = radius, randFarbe = farbe){
 
-    override suspend fun animate() {
-        x = Engine.view.width/2.0
-        y = Engine.view.height/2.0
-    }
+
 }
