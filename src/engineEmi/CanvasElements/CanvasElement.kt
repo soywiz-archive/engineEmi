@@ -5,8 +5,8 @@ import com.soywiz.korge.view.*
 
 
 abstract class CanvasElement(
-        x: Number,
-        y: Number) : Container() {
+         x: Number,
+         y: Number) : Container() {
 
     init {
         super.x = x.toDouble()

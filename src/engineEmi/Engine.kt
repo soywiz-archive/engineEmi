@@ -21,7 +21,7 @@ import engineEmi.Engine.canvasElements
 object Engine {
     var canvasElements = mutableListOf<CanvasElement>()
     var bodies = mutableListOf<Ebody>()
-    var view = MyView()
+    var view = ViewWindow()
     var viewHeight = 0.0
         private set
     var viewWidth = 0.0
@@ -39,8 +39,8 @@ object Engine {
 
 
     suspend fun main() = Korge(quality = GameWindow.Quality.PERFORMANCE, title = "Engine Emi") {
-        view.width = this.width
-        view.height = this.height
+        view.width = this.views.virtualWidth
+        view.height = this.views.virtualHeight
 
         views.clearColor = Colors.WHITE
         // Physik
@@ -112,7 +112,7 @@ object Engine {
     }
 }
 
-class MyView {
-    var height = 0.0
-    var width = 0.0
+class ViewWindow {
+    var height = 0
+    var width = 0
 }
