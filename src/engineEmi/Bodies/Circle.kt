@@ -47,6 +47,7 @@ class Circle(x: Number = 0,
             fillStroke(Context2d.Color(fillColor), Context2d.Color(strokeColor), Context2d.StrokeInfo(thickness = strokeThickness.toDouble())) {
                 circle(x, y, radius)
             }
+        }
     }
 
     fun writeInfo() {
