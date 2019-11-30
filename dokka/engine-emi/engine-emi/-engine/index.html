@@ -1,0 +1,116 @@
+<HTML>
+<HEAD>
+<meta charset="UTF-8">
+<title>Engine - engineEmi</title>
+<link rel="stylesheet" href="../../../style.css">
+</HEAD>
+<BODY>
+<a href="../../index.html">engineEmi</a>&nbsp;/&nbsp;<a href="../index.html">engineEmi</a>&nbsp;/&nbsp;<a href="./index.html">Engine</a><br/>
+<br/>
+<h1>Engine</h1>
+<code><span class="keyword">object </span><span class="identifier">Engine</span></code>
+<p>Die Game-Engine. Sie ist ein Singleton und wird mit <a href="run.html">Engine.run</a> gestartet.</p>
+<h3>Properties</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<h4><a href="bodies.html">bodies</a></h4>
+</td>
+<td>
+<p>Alle registrieten Objekte des Typs <a href="../../engine-emi.-bodies/-ebody/index.html">Ebody</a></p>
+<code><span class="keyword">var </span><span class="identifier">bodies</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/-mutable-list/index.html"><span class="identifier">MutableList</span></a><span class="symbol">&lt;</span><a href="../../engine-emi.-bodies/-ebody/index.html"><span class="identifier">Ebody</span></a><span class="symbol">&gt;</span></code></td>
+</tr>
+<tr>
+<td>
+<h4><a href="canvas-elements.html">canvasElements</a></h4>
+</td>
+<td>
+<p>Alle registrieten Objekte vom Typ <a href="../../engine-emi.-canvas-elements/-canvas-element/index.html">CanvasElement</a></p>
+<code><span class="keyword">var </span><span class="identifier">canvasElements</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/-mutable-list/index.html"><span class="identifier">MutableList</span></a><span class="symbol">&lt;</span><a href="../../engine-emi.-canvas-elements/-canvas-element/index.html"><span class="identifier">CanvasElement</span></a><span class="symbol">&gt;</span></code></td>
+</tr>
+<tr>
+<td>
+<h4><a href="show-coords.html">showCoords</a></h4>
+</td>
+<td>
+<code><span class="keyword">var </span><span class="identifier">showCoords</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html"><span class="identifier">Boolean</span></a></code></td>
+</tr>
+<tr>
+<td>
+<h4><a href="view.html">view</a></h4>
+</td>
+<td>
+<code><span class="keyword">var </span><span class="identifier">view</span><span class="symbol">: </span><a href="../-view-window/index.html"><span class="identifier">ViewWindow</span></a></code></td>
+</tr>
+<tr>
+<td>
+<h4><a href="view-height.html">viewHeight</a></h4>
+</td>
+<td>
+<code><span class="keyword">var </span><span class="identifier">viewHeight</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-double/index.html"><span class="identifier">Double</span></a></code></td>
+</tr>
+<tr>
+<td>
+<h4><a href="view-width.html">viewWidth</a></h4>
+</td>
+<td>
+<code><span class="keyword">var </span><span class="identifier">viewWidth</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-double/index.html"><span class="identifier">Double</span></a></code></td>
+</tr>
+</tbody>
+</table>
+<h3>Functions</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<h4><a href="main.html">main</a></h4>
+</td>
+<td>
+<code><span class="keyword">suspend</span> <span class="keyword">fun </span><span class="identifier">main</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code></td>
+</tr>
+<tr>
+<td>
+<h4><a href="register.html">register</a></h4>
+</td>
+<td>
+<p>Registriert einen <a href="../../engine-emi.-bodies/-ebody/index.html">Ebody</a> oder ein <a href="../../engine-emi.-canvas-elements/-canvas-element/index.html">CanvasElement</a> bei der Engine</p>
+<code><span class="keyword">fun </span><span class="identifier">register</span><span class="symbol">(</span><span class="identifier" id="engineEmi.Engine$register(kotlin.Any)/o">o</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-any/index.html"><span class="identifier">Any</span></a><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code>
+<p>Registriert alle Elemente einer Collection (Array, Liste, ...) bei der Engine</p>
+<code><span class="keyword">fun </span><span class="identifier">register</span><span class="symbol">(</span><span class="identifier" id="engineEmi.Engine$register(kotlin.collections.Collection((kotlin.Any)))/o">o</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/-collection/index.html"><span class="identifier">Collection</span></a><span class="symbol">&lt;</span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-any/index.html"><span class="identifier">Any</span></a><span class="symbol">&gt;</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code></td>
+</tr>
+<tr>
+<td>
+<h4><a href="register-body.html">registerBody</a></h4>
+</td>
+<td>
+<p>Registriert einen <a href="../../engine-emi.-bodies/-ebody/index.html">Ebody</a> bei der Engine (Physikobjekte)</p>
+<code><span class="keyword">fun </span><span class="identifier">registerBody</span><span class="symbol">(</span><span class="identifier" id="engineEmi.Engine$registerBody(engineEmi.Bodies.Ebody)/body">body</span><span class="symbol">:</span>&nbsp;<a href="../../engine-emi.-bodies/-ebody/index.html"><span class="identifier">Ebody</span></a><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code></td>
+</tr>
+<tr>
+<td>
+<h4><a href="register-body-with-world.html">registerBodyWithWorld</a></h4>
+</td>
+<td>
+<code><span class="keyword">suspend</span> <span class="keyword">fun </span><span class="identifier">WorldView</span><span class="symbol">.</span><span class="identifier">registerBodyWithWorld</span><span class="symbol">(</span><span class="identifier" id="engineEmi.Engine$registerBodyWithWorld(com.soywiz.korge.box2d.WorldView, engineEmi.Bodies.Ebody)/body">body</span><span class="symbol">:</span>&nbsp;<a href="../../engine-emi.-bodies/-ebody/index.html"><span class="identifier">Ebody</span></a><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code></td>
+</tr>
+<tr>
+<td>
+<h4><a href="register-canvas-element.html">registerCanvasElement</a></h4>
+</td>
+<td>
+<p>Registriert ein <a href="../../engine-emi.-canvas-elements/-canvas-element/index.html">CanvasElement</a> bei der Engine (reguläre Objekte)</p>
+<code><span class="keyword">fun </span><span class="identifier">registerCanvasElement</span><span class="symbol">(</span><span class="identifier" id="engineEmi.Engine$registerCanvasElement(engineEmi.CanvasElements.CanvasElement)/canvasElement">canvasElement</span><span class="symbol">:</span>&nbsp;<a href="../../engine-emi.-canvas-elements/-canvas-element/index.html"><span class="identifier">CanvasElement</span></a><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code></td>
+</tr>
+<tr>
+<td>
+<h4><a href="run.html">run</a></h4>
+</td>
+<td>
+<p>Startet die Engine. Kann Parameter zur Konfiguration übernehmen</p>
+<code><span class="keyword">suspend</span> <span class="keyword">fun </span><span class="identifier">run</span><span class="symbol">(</span><span class="identifier" id="engineEmi.Engine$run(kotlin.Boolean)/showCoords">showCoords</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html"><span class="identifier">Boolean</span></a>&nbsp;<span class="symbol">=</span>&nbsp;false<span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code></td>
+</tr>
+</tbody>
+</table>
+</BODY>
+</HTML>

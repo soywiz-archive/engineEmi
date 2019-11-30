@@ -98,18 +98,25 @@ object Engine {
         bodies.add(body)
     }
 
+
     /**
      * Registriert einen [Ebody] oder ein [CanvasElement] bei der Engine
+     * Es ist auch möglich Arrays und Collections zu registrieren.
+     * [Ebody] und [CanvasElement] dürfen in den Arrays oder Collections nicht gemischt vorkommen
      * @param o Any
      */
     fun register(o: Any) {
-        if (o is Ebody)
-            registerBody(o)
-        else if (o is CanvasElement)
-            registerCanvasElement(o)
-        else
-            Log.log("Objekt ${o} vom Typ ${o::class} kann nicht registriert werden.")
+        when{
+            o is Array<*> -> o.map {it?.let { register(it) }}
+            o is Collection<*> -> o.map {it?.let { register(it)}}
+            o is Ebody -> registerBody(o)
+            o is CanvasElement -> registerCanvasElement(o)
+        }
     }
+
+
+
+
 }
 
 class ViewWindow {

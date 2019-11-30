@@ -1,0 +1,24 @@
+<HTML>
+<HEAD>
+<meta charset="UTF-8">
+<title>CanvasElement.animate - engineEmi</title>
+<link rel="stylesheet" href="../../../style.css">
+</HEAD>
+<BODY>
+<a href="../../index.html">engineEmi</a>&nbsp;/&nbsp;<a href="../index.html">engineEmi.CanvasElements</a>&nbsp;/&nbsp;<a href="index.html">CanvasElement</a>&nbsp;/&nbsp;<a href="./animate.html">animate</a><br/>
+<br/>
+<h1>animate</h1>
+<a name="engineEmi.CanvasElements.CanvasElement$animate()"></a>
+<code><span class="keyword">open</span> <span class="keyword">suspend</span> <span class="keyword">fun </span><span class="identifier">animate</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code>
+<p>Muss in Subklassen überschrieben werden, falls man das Objekt animieren will.
+Wird im default ca. 60 Mal pro Sekunde aufgerufen.
+Änderungen der Parameter wie etwa x und y werden so direkt angezeigt, wenn man sie überschreibt.
+Alternativ kann man auch bestehenden Objekten neue Animationen zuweisen. Die geht etwa mit Hilfe von <a href="./animate.html">animate</a></p>
+<a name="engineEmi.CanvasElements.CanvasElement$animate(kotlin.Function0((kotlin.Any)))"></a>
+<code><span class="keyword">open</span> <span class="keyword">suspend</span> <span class="keyword">fun </span><span class="identifier">animate</span><span class="symbol">(</span><span class="identifier" id="engineEmi.CanvasElements.CanvasElement$animate(kotlin.Function0((kotlin.Any)))/animationRoutine">animationRoutine</span><span class="symbol">:</span>&nbsp;<span class="symbol">(</span><span class="symbol">)</span>&nbsp;<span class="symbol">-&gt;</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-any/index.html"><span class="identifier">Any</span></a><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code>
+<p>Bekommt eine animationsRoutine als Lamba, dass Objekte auch nachträglich mit Animationen bestückt werden können</p>
+<h3>Parameters</h3>
+<p><a name="animationRoutine"></a>
+<code>animationRoutine</code> - Enthält die Anweisungen, welche die Parameter (etwa x und y Koordinaten für eine Bewegung) verändern.</p>
+</BODY>
+</HTML>

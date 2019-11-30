@@ -1,0 +1,214 @@
+<HTML>
+<HEAD>
+<meta charset="UTF-8">
+<title>Ebody - engineEmi</title>
+<link rel="stylesheet" href="../../../style.css">
+</HEAD>
+<BODY>
+<a href="../../index.html">engineEmi</a>&nbsp;/&nbsp;<a href="../index.html">engineEmi.Bodies</a>&nbsp;/&nbsp;<a href="./index.html">Ebody</a><br/>
+<br/>
+<h1>Ebody</h1>
+<code><span class="keyword">abstract</span> <span class="keyword">class </span><span class="identifier">Ebody</span></code>
+<p>Wrapper-Klasse für box2d Body. Ebodies beinhalten einen Body (Das Objekt, auf welchem die physikalischen Simulationen ausgeführt werden. Sie können leichter instanziiert werden und besitzen nebem dem Body sowohl eine Fixture, als auch eine Shape</p>
+<h3>Constructors</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<h4><a href="-init-.html">&lt;init&gt;</a></h4>
+</td>
+<td>
+<p>Wrapper-Klasse für box2d Body. Ebodies beinhalten einen Body (Das Objekt, auf welchem die physikalischen Simulationen ausgeführt werden. Sie können leichter instanziiert werden und besitzen nebem dem Body sowohl eine Fixture, als auch eine Shape</p>
+<code><span class="identifier">Ebody</span><span class="symbol">(</span><span class="identifier" id="engineEmi.Bodies.Ebody$<init>(kotlin.Number, kotlin.Number, kotlin.Float, kotlin.Float, kotlin.Float, org.jbox2d.dynamics.BodyType)/x">x</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-number/index.html"><span class="identifier">Number</span></a><span class="symbol">, </span><span class="identifier" id="engineEmi.Bodies.Ebody$<init>(kotlin.Number, kotlin.Number, kotlin.Float, kotlin.Float, kotlin.Float, org.jbox2d.dynamics.BodyType)/y">y</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-number/index.html"><span class="identifier">Number</span></a><span class="symbol">, </span><span class="identifier" id="engineEmi.Bodies.Ebody$<init>(kotlin.Number, kotlin.Number, kotlin.Float, kotlin.Float, kotlin.Float, org.jbox2d.dynamics.BodyType)/density">density</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-float/index.html"><span class="identifier">Float</span></a><span class="symbol">, </span><span class="identifier" id="engineEmi.Bodies.Ebody$<init>(kotlin.Number, kotlin.Number, kotlin.Float, kotlin.Float, kotlin.Float, org.jbox2d.dynamics.BodyType)/friction">friction</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-float/index.html"><span class="identifier">Float</span></a><span class="symbol">, </span><span class="identifier" id="engineEmi.Bodies.Ebody$<init>(kotlin.Number, kotlin.Number, kotlin.Float, kotlin.Float, kotlin.Float, org.jbox2d.dynamics.BodyType)/restitution">restitution</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-float/index.html"><span class="identifier">Float</span></a><span class="symbol">, </span><span class="identifier" id="engineEmi.Bodies.Ebody$<init>(kotlin.Number, kotlin.Number, kotlin.Float, kotlin.Float, kotlin.Float, org.jbox2d.dynamics.BodyType)/bodyType">bodyType</span><span class="symbol">:</span>&nbsp;<span class="identifier">BodyType</span><span class="symbol">)</span></code></td>
+</tr>
+</tbody>
+</table>
+<h3>Properties</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<h4><a href="bd.html">bd</a></h4>
+</td>
+<td>
+<code><span class="keyword">val </span><span class="identifier">bd</span><span class="symbol">: </span><span class="identifier">BodyDef</span></code></td>
+</tr>
+<tr>
+<td>
+<h4><a href="body.html">body</a></h4>
+</td>
+<td>
+<code><span class="keyword">lateinit</span> <span class="keyword">var </span><span class="identifier">body</span><span class="symbol">: </span><span class="identifier">Body</span></code></td>
+</tr>
+<tr>
+<td>
+<h4><a href="body-type.html">bodyType</a></h4>
+</td>
+<td>
+<p>Der BodyType. Kann versch. Werte annehmen BodyType.STATIC für unbewegliche (statische Objekte), BodyType.DYNAMIC für beweglice Objekte, welche nach den Gesetzen der Physik interagieren, BodyType.KINEMATIC] für Objekte, die sich unter Nutzerkontroll bewegen dürfen</p>
+<code><span class="keyword">var </span><span class="identifier">bodyType</span><span class="symbol">: </span><span class="identifier">BodyType</span></code></td>
+</tr>
+<tr>
+<td>
+<h4><a href="density.html">density</a></h4>
+</td>
+<td>
+<p>Dichte (Masse im Vergleich zur Umgebung)</p>
+<code><span class="keyword">var </span><span class="identifier">density</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-float/index.html"><span class="identifier">Float</span></a></code></td>
+</tr>
+<tr>
+<td>
+<h4><a href="fixture.html">fixture</a></h4>
+</td>
+<td>
+<code><span class="keyword">var </span><span class="identifier">fixture</span><span class="symbol">: </span><span class="identifier">FixtureDef</span></code></td>
+</tr>
+<tr>
+<td>
+<h4><a href="friction.html">friction</a></h4>
+</td>
+<td>
+<p>Reibungskoeffizient geg. anderen Ebody-Objekten</p>
+<code><span class="keyword">var </span><span class="identifier">friction</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-float/index.html"><span class="identifier">Float</span></a></code></td>
+</tr>
+<tr>
+<td>
+<h4><a href="restitution.html">restitution</a></h4>
+</td>
+<td>
+<p>Restitution: So etwas wie Weichheit bzw. "Bounciness"</p>
+<code><span class="keyword">var </span><span class="identifier">restitution</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-float/index.html"><span class="identifier">Float</span></a></code></td>
+</tr>
+<tr>
+<td>
+<h4><a href="shape.html">shape</a></h4>
+</td>
+<td>
+<p>shape, bd und fixture müssen in den Subklassen überschrieben werden
+-&gt; s. Box2D body</p>
+<code><span class="keyword">abstract</span> <span class="keyword">val </span><span class="identifier">shape</span><span class="symbol">: </span><span class="identifier">Shape</span></code></td>
+</tr>
+<tr>
+<td>
+<h4><a href="view.html">view</a></h4>
+</td>
+<td>
+<code><span class="keyword">lateinit</span> <span class="keyword">var </span><span class="identifier">view</span><span class="symbol">: </span><span class="identifier">View</span></code></td>
+</tr>
+<tr>
+<td>
+<h4><a href="world.html">world</a></h4>
+</td>
+<td>
+<code><span class="keyword">lateinit</span> <span class="keyword">var </span><span class="identifier">world</span><span class="symbol">: </span><span class="identifier">World</span></code></td>
+</tr>
+<tr>
+<td>
+<h4><a href="x.html">x</a></h4>
+</td>
+<td>
+<p>X-Koordinate (Achtung: Box2D-Koordinatensystem!)</p>
+<code><span class="keyword">var </span><span class="identifier">x</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-number/index.html"><span class="identifier">Number</span></a></code></td>
+</tr>
+<tr>
+<td>
+<h4><a href="y.html">y</a></h4>
+</td>
+<td>
+<p>Y-Koordinate (Achtung: Box2D-Koordinatensystem!)</p>
+<code><span class="keyword">var </span><span class="identifier">y</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-number/index.html"><span class="identifier">Number</span></a></code></td>
+</tr>
+</tbody>
+</table>
+<h3>Functions</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<h4><a href="create-body-attach-to-fixture.html">createBodyAttachToFixture</a></h4>
+</td>
+<td>
+<p>FÜgt Body und Fixture zusammen</p>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">createBodyAttachToFixture</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code></td>
+</tr>
+<tr>
+<td>
+<h4><a href="create-fixture.html">createFixture</a></h4>
+</td>
+<td>
+<p>Erzeugt die Fixture.</p>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">createFixture</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code></td>
+</tr>
+<tr>
+<td>
+<h4><a href="create-view.html">createView</a></h4>
+</td>
+<td>
+<p>Überschreiben!
+Erzeugt den konkreten View und legt ihn in der Property view an. Siehe Beispiele in <a href="../-circle/index.html">Circle</a> oder <a href="../-rectangle/index.html">Rectangle</a></p>
+<code><span class="keyword">abstract</span> <span class="keyword">suspend</span> <span class="keyword">fun </span><span class="identifier">createView</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code></td>
+</tr>
+<tr>
+<td>
+<h4><a href="init-body.html">initBody</a></h4>
+</td>
+<td>
+<p>Bei der Erstellung des Bodies ist die World noch nicht bekannt. Diese wird erst beim Erzeugen des Korge
+Objekts erstellt. Nach dem die Welt erstellt ist, wird <a href="init-body.html">initBody</a> aufgerufen, um das EBody-Objekt
+fertig zu initialiseren</p>
+<code><span class="keyword">open</span> <span class="keyword">suspend</span> <span class="keyword">fun </span><span class="identifier">initBody</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code></td>
+</tr>
+<tr>
+<td>
+<h4><a href="init-for-world.html">initForWorld</a></h4>
+</td>
+<td>
+<p>Initialisiert den Ebody mit der (Box2D)-World der Engine</p>
+<code><span class="keyword">open</span> <span class="keyword">suspend</span> <span class="keyword">fun </span><span class="identifier">initForWorld</span><span class="symbol">(</span><span class="identifier" id="engineEmi.Bodies.Ebody$initForWorld(org.jbox2d.dynamics.World)/world">world</span><span class="symbol">:</span>&nbsp;<span class="identifier">World</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code></td>
+</tr>
+<tr>
+<td>
+<h4><a href="setup.html">setup</a></h4>
+</td>
+<td>
+<p>Erzeugt die Fixture und fügt Body und Fixture zusammen</p>
+<code><span class="keyword">fun </span><span class="identifier">setup</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code></td>
+</tr>
+</tbody>
+</table>
+<h3>Inheritors</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<h4><a href="../-circle/index.html">Circle</a></h4>
+</td>
+<td>
+<code><span class="keyword">class </span><span class="identifier">Circle</span>&nbsp;<span class="symbol">:</span>&nbsp;<a href="./index.html"><span class="identifier">Ebody</span></a></code></td>
+</tr>
+<tr>
+<td>
+<h4><a href="../-image/index.html">Image</a></h4>
+</td>
+<td>
+<code><span class="keyword">class </span><span class="identifier">Image</span>&nbsp;<span class="symbol">:</span>&nbsp;<a href="./index.html"><span class="identifier">Ebody</span></a></code></td>
+</tr>
+<tr>
+<td>
+<h4><a href="../-line/index.html">Line</a></h4>
+</td>
+<td>
+<code><span class="keyword">class </span><span class="identifier">Line</span>&nbsp;<span class="symbol">:</span>&nbsp;<a href="./index.html"><span class="identifier">Ebody</span></a></code></td>
+</tr>
+<tr>
+<td>
+<h4><a href="../-rectangle/index.html">Rectangle</a></h4>
+</td>
+<td>
+<p>Erzeugt einen <a href="./index.html">Ebody</a> mit einer rechteckigen Form.</p>
+<code><span class="keyword">class </span><span class="identifier">Rectangle</span>&nbsp;<span class="symbol">:</span>&nbsp;<a href="./index.html"><span class="identifier">Ebody</span></a></code></td>
+</tr>
+</tbody>
+</table>
+</BODY>
+</HTML>
