@@ -3,6 +3,7 @@ package engineEmi.Bodies
 import com.soywiz.korge.box2d.*
 import com.soywiz.korge.view.*
 import com.soywiz.korim.color.*
+import com.soywiz.korim.vector.*
 import com.soywiz.korma.geom.vector.*
 import org.jbox2d.collision.shapes.*
 import org.jbox2d.dynamics.*
@@ -42,7 +43,10 @@ class Circle(x: Number = 0,
      */
 
     override suspend fun createView() {
-        view = Graphics(autoScaling = true).apply { fill(fillColor) { circle(x, y, radius.toFloat()) } }
+        view = Graphics(autoScaling = true).apply {
+            fillStroke(Context2d.Color(fillColor), Context2d.Color(strokeColor), Context2d.StrokeInfo(thickness = strokeColor.toDouble())) {
+                circle(x, y, radius)
+            }
     }
 
     fun writeInfo() {

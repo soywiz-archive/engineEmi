@@ -17,9 +17,8 @@ suspend fun main() {
 
     // val circle = Circle(radius = 32.0)
 
-    val meinKreis = Kreis(x = 100.0, y = 100.0, radius = 20.0, fuellFarbe = Colors.LIGHTCORAL)
+    val meinKreis = Kreis(x = 100.0, y = 100.0, radius = 20.0, fuellFarbe = Colors.LIGHTCORAL, randFarbe = Colors.BLACK, randDicke = 3)
     Engine.registerCanvasElement(meinKreis)
-
 
 
     val animationsRoutine = {
@@ -30,13 +29,13 @@ suspend fun main() {
     meinKreis.animate(animationsRoutine)
 
 
-    val meinRechteck = Rechteck(höhe = 100.0, breite = 100.0, x = 100.0, y = 100.0, fuellFarbe = Colors.LAWNGREEN)
-    val meineGerade = Gerade(x = 10.0, y = 10.0, toX = 100.0, toY = 180.0, dicke = 3, fuellFarbe = Colors.BLUEVIOLET)
-    val meinBild = Bild(x = 100.0, y = 150.0, bildDatei = "hut.png", skalierung = 0.5f)
+    //  val meinRechteck = Rechteck(höhe = 100.0, breite = 100.0, x = 100.0, y = 100.0, fuellFarbe = Colors.LAWNGREEN)
+    //  val meineGerade = Gerade(x = 10.0, y = 10.0, toX = 100.0, toY = 180.0, dicke = 3, fuellFarbe = Colors.BLUEVIOLET)
+    //  val meinBild = Bild(x = 100.0, y = 150.0, bildDatei = "hut.png", skalierung = 0.5f)
 
-    Engine.registerCanvasElement(meineGerade)
-    Engine.registerCanvasElement(meinRechteck)
-    Engine.registerCanvasElement(meinBild)
+    // Engine.registerCanvasElement(meineGerade)
+    // Engine.registerCanvasElement(meinRechteck)
+    // Engine.registerCanvasElement(meinBild)
 
     // Engine.registerCanvasElement(circle)
 
@@ -76,7 +75,6 @@ suspend fun main() {
 
 
     Engine.run()
-    //
 
 
 }
