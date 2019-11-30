@@ -44,7 +44,7 @@ class Circle(x: Number = 0,
 
     override suspend fun createView() {
         view = Graphics(autoScaling = true).apply {
-            fillStroke(Context2d.Color(fillColor), Context2d.Color(strokeColor), Context2d.StrokeInfo(thickness = strokeColor.toDouble())) {
+            fillStroke(Context2d.Color(fillColor), Context2d.Color(strokeColor), Context2d.StrokeInfo(thickness = strokeThickness.toDouble())) {
                 circle(x, y, radius)
             }
     }
