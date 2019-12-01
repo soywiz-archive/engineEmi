@@ -30,9 +30,6 @@ korge {
     supportBox2d()
 }
 
-
-
-
 tasks {
     val dokka by getting(org.jetbrains.dokka.gradle.DokkaTask::class) {
         outputFormat = "html"
@@ -40,21 +37,15 @@ tasks {
     }
 }
 
-
-
-
-tasks.register<DefaultTask>("openInBrowser"){
+tasks.register<DefaultTask>("openInBrowser") {
     group = "engineemi"
     dependsOn("jsWebRun")
 }
 
-tasks.register<DefaultTask>("openLocal"){
+tasks.register<DefaultTask>("openLocal") {
     group = "engineemi"
     dependsOn("runJvm")
 }
 
-
 kotlin.sourceSets["commonMain"].kotlin.srcDir("src")
 kotlin.sourceSets["commonMain"].resources.srcDir("resources")
-
-
