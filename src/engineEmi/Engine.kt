@@ -34,11 +34,17 @@ object Engine {
      */
     suspend fun run(showCoords: Boolean = false) {
         this.showCoords = showCoords
-        main()
+        main { }
+    }
+
+    suspend fun run(showCoords: Boolean = false, body: suspend () -> Unit) {
+        this.showCoords = showCoords
+        main(body)
     }
 
 
-    suspend fun main() = Korge(quality = GameWindow.Quality.PERFORMANCE, title = "Engine Emi") {
+    suspend fun main(body: suspend () -> Unit) = Korge(quality = GameWindow.Quality.PERFORMANCE, title = "Engine Emi") {
+        body()
         view.width = this.views.virtualWidth
         view.height = this.views.virtualHeight
 
